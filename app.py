@@ -36,7 +36,7 @@ from usellm import Message, Options, UseLLM
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 # Adding the navbar
-st.markdown(f'<style>
+st.markdown(f"<style>
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -67,7 +67,7 @@ body {
 .sticky + .content {
   padding-top: 102px;
 }
-</style>', unsafe_allow_html=True)
+</style>", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="header" id="myHeader">
