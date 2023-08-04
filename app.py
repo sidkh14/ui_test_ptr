@@ -67,7 +67,7 @@ body {
 .sticky + .content {
   padding-top: 102px;
 }
-</style>', unsafe_allow_html=True)
+</style>')
 
 st.markdown("""
 <div class="header" id="myHeader">
