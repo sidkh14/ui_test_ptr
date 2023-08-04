@@ -133,8 +133,7 @@ def render_pdf_as_images(pdf_file):
     return pdf_images
     
 # Set Streamlit layout
-# st.set_page_config(page_title="SAR Usecase ~~~~", layout="wide")
-# Adding titles
+st.set_page_config(page_title="SAR", page_icon="📄")# Adding titles
 st.title("SAR Evidence Processor")
 # st.subheader('Evidence Processor')
 # Adding Sidebar
