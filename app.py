@@ -471,3 +471,10 @@ st.markdown(f""" <style>
         padding-bottom: {padding}rem;
     }} </style> """, unsafe_allow_html=True)
 
+[theme]
+primaryColor="#2214c7"
+backgroundColor="#ffffff"
+secondaryBackgroundColor="#e8eef9"
+textColor="#000000"
+font="sans serif"
+
