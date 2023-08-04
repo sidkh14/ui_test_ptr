@@ -36,7 +36,7 @@ from usellm import Message, Options, UseLLM
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 # Adding the navbar
-navbar_head = """<style>
+st.markdown("""<style>
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -67,9 +67,9 @@ body {
 .sticky + .content {
   padding-top: 102px;
 }
-</style>"""
+</style>""", unsafe_allow_html=False)
 
-st.markdown(navbar_head , unsafe_allow_html=True)
+
 
 @st.cache_data
 def merge_pdfs(pdf_list):
