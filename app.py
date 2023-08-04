@@ -452,14 +452,5 @@ st.markdown(
     , unsafe_allow_html=True)
 st.markdown('<div class="footer"><p></p></div>', unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    #MainMenu {visibility: hidden;}
-    css-30do4w e10z71040 {
-      visibility: hidden;
-    }
-    </style>
-    """,unsafe_allow_html=True)
-st.markdown('<div class="MainMenu"><p></p></div>', unsafe_allow_html=True)
+
 
