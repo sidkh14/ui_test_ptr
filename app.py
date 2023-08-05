@@ -166,8 +166,8 @@ with st.sidebar:
                 st.subheader(f"Contents of {selected_file}")
                 selected_page = st.slider("Select a page", 1, len(pdf_images), 1)
                 for img_bytes in pdf_images:
-                    st.image(img_bytes[selected_page - 1], use_column_width=True)
-                    # st.image(img_bytes, use_column_width=True)    
+                    # st.image(img_bytes[selected_page - 1], use_column_width=True)
+                    st.image(img_bytes, use_column_width=False)    
 
 
 model_name = "sentence-transformers/all-MiniLM-L6-v2"
