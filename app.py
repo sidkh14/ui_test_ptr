@@ -110,7 +110,7 @@ def render_pdf_as_images(pdf_file):
 st.title("SAR Evidence Processor")
 # st.subheader('Evidence Processor')
 # Adding Sidebar
-st.sidebar.image('logo.png', width=133)
+st.sidebar.image('logo.png', width=133,)
 # Navbar
 
 st.markdown('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">', unsafe_allow_html=True)
@@ -169,6 +169,8 @@ hf_embeddings = embed(model_name)
 # st.write("Use the navigation sidebar to merge PDF files.")
 
 # Add a single dropdown
+st.markdown("")
+st.markdown("---")
 st.sidebar.subheader("Select a Case No.")
 options = ["Select a Case", "Case 1", "Case 2", "Case 3", "Case 4", "Case 5"]
 selected_option = st.sidebar.selectbox("Cases:", options)
