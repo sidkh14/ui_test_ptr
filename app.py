@@ -119,8 +119,6 @@ st.title("SAR Evidence Processor")
 # st.subheader('Evidence Processor')
 with st.sidebar:
     # st.sidebar.write("This is :blue[test]")
-    # Adding Sidebar
-    st.sidebar.image('logo.png', width=99)
     # Navbar
     st.markdown('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">', unsafe_allow_html=True)
 
@@ -141,6 +139,35 @@ with st.sidebar:
     </div>
     </nav>
     """, unsafe_allow_html=True)
+
+    # Add a single dropdown
+    st.sidebar.markdown(" ")
+    st.sidebar.markdown("---")
+    options = ["Select a Case", "Case 1", "Case 2", "Case 3", "Case 4", "Case 5"]
+    selected_option = st.sidebar.selectbox("Select a Case No.", options)
+
+    # Redirect to Merge PDFs page when "Merge PDFs" is selected
+    if selected_option == "Case 1":
+        # st.header("Merge Documents")
+        # st.write("Upload multiple document files and merge them into one doc.")
+
+        # Upload PDF files
+        # st.subheader("Upload Case Files")
+        pdf_files = st.file_uploader("Choose files", type=["pdf"], accept_multiple_files=True)
+        
+        # Show uploaded files in a dropdown
+        if pdf_files:
+            st.subheader("Uploaded Files:")
+            file_names = [file.name for file in pdf_files]
+            selected_file = st.selectbox("Select a file", file_names)
+
+            # Display selected PDF contents
+            if selected_file:
+                selected_pdf = [pdf for pdf in pdf_files if pdf.name == selected_file][0]
+                pdf_images = render_pdf_as_images(selected_pdf)
+                st.subheader(f"Contents of {selected_file}")
+                for img_bytes in pdf_images:
+                    st.image(img_bytes, use_column_width=True)     
 
 
 model_name = "sentence-transformers/all-MiniLM-L6-v2"
@@ -177,34 +204,34 @@ hf_embeddings = embed(model_name)
 # st.header("Welcome to the PDF Merger App")
 # st.write("Use the navigation sidebar to merge PDF files.")
 
-# Add a single dropdown
-st.sidebar.markdown(" ")
-st.sidebar.markdown("---")
-options = ["Select a Case", "Case 1", "Case 2", "Case 3", "Case 4", "Case 5"]
-selected_option = st.sidebar.selectbox("Select a Case No.", options)
+# # Add a single dropdown
+# st.sidebar.markdown(" ")
+# st.sidebar.markdown("---")
+# options = ["Select a Case", "Case 1", "Case 2", "Case 3", "Case 4", "Case 5"]
+# selected_option = st.sidebar.selectbox("Select a Case No.", options)
 
-# Redirect to Merge PDFs page when "Merge PDFs" is selected
-if selected_option == "Case 1":
-    # st.header("Merge Documents")
-    # st.write("Upload multiple document files and merge them into one doc.")
+# # Redirect to Merge PDFs page when "Merge PDFs" is selected
+# if selected_option == "Case 1":
+#     # st.header("Merge Documents")
+#     # st.write("Upload multiple document files and merge them into one doc.")
 
-    # Upload PDF files
-    # st.subheader("Upload Case Files")
-    pdf_files = st.file_uploader("Choose files", type=["pdf"], accept_multiple_files=True)
+#     # Upload PDF files
+#     # st.subheader("Upload Case Files")
+#     pdf_files = st.file_uploader("Choose files", type=["pdf"], accept_multiple_files=True)
     
-    # Show uploaded files in a dropdown
-    if pdf_files:
-        st.subheader("Uploaded Files:")
-        file_names = [file.name for file in pdf_files]
-        selected_file = st.selectbox("Select a file", file_names)
+#     # Show uploaded files in a dropdown
+#     if pdf_files:
+#         st.subheader("Uploaded Files:")
+#         file_names = [file.name for file in pdf_files]
+#         selected_file = st.selectbox("Select a file", file_names)
 
-        # Display selected PDF contents
-        if selected_file:
-            selected_pdf = [pdf for pdf in pdf_files if pdf.name == selected_file][0]
-            pdf_images = render_pdf_as_images(selected_pdf)
-            st.subheader(f"Contents of {selected_file}")
-            for img_bytes in pdf_images:
-                st.image(img_bytes, use_column_width=True)              
+#         # Display selected PDF contents
+#         if selected_file:
+#             selected_pdf = [pdf for pdf in pdf_files if pdf.name == selected_file][0]
+#             pdf_images = render_pdf_as_images(selected_pdf)
+#             st.subheader(f"Contents of {selected_file}")
+#             for img_bytes in pdf_images:
+#                 st.image(img_bytes, use_column_width=True)              
                 
     # Merge PDFs extract text
     # if st.button("Merge and Download"):
