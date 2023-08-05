@@ -110,7 +110,7 @@ def render_pdf_as_images(pdf_file):
 st.title("SAR Evidence Processor")
 # st.subheader('Evidence Processor')
 # Adding Sidebar
-st.sidebar.image('logo.png', width=99,)
+st.sidebar.image('logo.png', width=99,background= '#005050')
 # Navbar
 
 st.markdown('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">', unsafe_allow_html=True)
