@@ -105,7 +105,18 @@ def render_pdf_as_images(pdf_file):
         pdf_images.append(img_bytes)
     pdf_document.close()
     return pdf_images
-    
+
+# Set Sidebar
+st.markdown("""
+<style>
+    [data-testid=stSidebar] {
+        background-color: #005050;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+with st.sidebar:
+    "## This is the sidebar"
 # Set Streamlit layout
 st.title("SAR Evidence Processor")
 # st.subheader('Evidence Processor')
