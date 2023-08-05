@@ -169,6 +169,7 @@ hf_embeddings = embed(model_name)
 # st.write("Use the navigation sidebar to merge PDF files.")
 
 # Add a single dropdown
+st.sidebar.markdown(" ")
 st.sidebar.markdown("---")
 st.sidebar.subheader("Select a Case No.")
 options = ["Select a Case", "Case 1", "Case 2", "Case 3", "Case 4", "Case 5"]
