@@ -165,8 +165,8 @@ with st.sidebar:
                 pdf_images = render_pdf_as_images(selected_pdf)
                 st.subheader(f"Contents of {selected_file}")
                 for img_bytes in pdf_images:
-                    st.text_area("img_bytes", value=contents, height=400)
-                    # st.image(img_bytes, use_column_width=True)     
+                    # st.text_area("img_bytes", value=contents, height=400)
+                    st.text_area(st.image(img_bytes, use_column_width=True))     
 
 
 model_name = "sentence-transformers/all-MiniLM-L6-v2"
