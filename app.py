@@ -110,7 +110,7 @@ def render_pdf_as_images(pdf_file):
 st.markdown("""
 <style>
     [data-testid=stSidebar] {
-        background-color: #005050;
+        background-color: #D3D3D3;
     }
 </style>
 """, unsafe_allow_html=True)
