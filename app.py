@@ -124,7 +124,7 @@ st.markdown("""
     <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link disabled" href="#">
-            <img src="logo.png" width="30" height="30" alt="">
+            <img src="	https://www.exlservice.com/themes/exl_service/exl_logo_rgb_orange_pos_94.png" width="30" height="30" alt="">
             <span class="sr-only">(current)</span>
         </a>
       </li>
@@ -169,7 +169,7 @@ hf_embeddings = embed(model_name)
 # st.write("Use the navigation sidebar to merge PDF files.")
 
 # Add a single dropdown
-st.subheader("Select a Case No.")
+st.sidebar.subheader("Select a Case No.")
 options = ["Select a Case", "Case 1", "Case 2", "Case 3", "Case 4", "Case 5"]
 selected_option = st.selectbox("Options", options)
 
