@@ -171,7 +171,7 @@ hf_embeddings = embed(model_name)
 # Add a single dropdown
 st.sidebar.subheader("Select a Case No.")
 options = ["Select a Case", "Case 1", "Case 2", "Case 3", "Case 4", "Case 5"]
-selected_option = st.sidebar.selectbox("Options", options)
+selected_option = st.sidebar.selectbox("Cases:", options)
 
 # Redirect to Merge PDFs page when "Merge PDFs" is selected
 if selected_option == "Case 1":
