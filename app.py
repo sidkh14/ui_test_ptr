@@ -164,9 +164,7 @@ with st.sidebar:
                 selected_pdf = [pdf for pdf in pdf_files if pdf.name == selected_file][0]
                 pdf_images = render_pdf_as_images(selected_pdf)
                 st.subheader(f"Contents of {selected_file}")
-                # selected_page = st.slider("Select a page", 1, len(pdf_images), 1)
                 for img_bytes in pdf_images:
-                    # st.image(img_bytes[selected_page - 1], use_column_width=True)
                     st.image(img_bytes, use_column_width=True)    
 
 
