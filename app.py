@@ -157,7 +157,7 @@ with st.sidebar:
         
         # Show uploaded files in a dropdown
         if pdf_files:
-            st.subheader.markdown("Uploaded Files &larr")
+            st.subheader("Uploaded Files👇")
             file_names = [file.name for file in pdf_files]
             selected_file = st.selectbox("Select a file", file_names)
 
