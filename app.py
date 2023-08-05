@@ -123,7 +123,10 @@ st.markdown("""
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link disabled" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link disabled" href="#">
+            <img src="logo.png" width="30" height="30" alt="">
+            <span class="sr-only">(current)</span>
+        </a>
       </li>
     </ul>
   </div>
