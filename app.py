@@ -172,9 +172,9 @@ with st.sidebar:
                 st.subheader(f"Contents of {selected_file}")
                 for img_bytes in pdf_images:
                     st.image(img_bytes, use_column_width=True)
-else:
-    # Disabling the button
-    st.session_state.disabled = True
+    else:
+        # Disabling the button
+        st.session_state.disabled = True
 
 
 model_name = "sentence-transformers/all-MiniLM-L6-v2"
