@@ -461,7 +461,7 @@ with st.spinner('Wait for it...'):
 
 
 
-if st.button("Summarize"):
+if st.button("Summarize",disabled=st.session_state.disabled):
     # chat_history = resp_dict_obj['Summary']
     # memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=700)
     # memory.save_context({"input": "This is the entire chat summary"}, 
