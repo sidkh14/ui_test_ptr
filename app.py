@@ -157,16 +157,14 @@ with st.sidebar:
         # Upload PDF files
         # st.subheader("Upload Case Files")
         pdf_files = st.file_uploader("Choose files", type=["pdf"], accept_multiple_files=True)
-        
-        # Enabling the button
-        st.session_state.disabled = False
 
         # Show uploaded files in a dropdown
         if pdf_files:
             st.subheader("Uploaded Files👇")
             file_names = [file.name for file in pdf_files]
             selected_file = st.selectbox("Select a file", file_names)
-
+            # Enabling the button
+            st.session_state.disabled = False
             # Display selected PDF contents
             if selected_file:
                 selected_pdf = [pdf for pdf in pdf_files if pdf.name == selected_file][0]
@@ -353,7 +351,7 @@ except Exception:
 # Text Input
 
 st.subheader("Ask Case Questions")
-query = st.text_input('Please ask below the additional case questions.')
+query = st.text_input('Please ask below the additional case questions.',,disabled=st.session_state.disabled)
 text_dict = {}
 
 def LLM_Response():
