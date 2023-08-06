@@ -292,47 +292,48 @@ def embedding_store(pdf_files):
 
 # Submit Button
 st.subheader('Case Checklist Snapshot')
-if st.button("Key Case Insights"):
-    if pdf_files is not None:
-        # File handling logic
-        _, docsearch = embedding_store(pdf_files)
-        queries ="Please provide the following information regarding the possible fraud case: What is the name of the customer name,\
-        has any suspect been reported, list the merchant name, how was the bank notified, when was the bank notified, what is the fraud type,\
-        when did the fraud occur, was the disputed amount greater than 5000 USD, what type of cards are involved, was the police report filed,\
-        and based on the evidence, is this a suspicious activity(Summarize all the questions asked prior to this in a detailed manner),that's the answer of\
-        whether this is a suspicious activity\
-        "
-        contexts = docsearch.similarity_search(queries, k=5) 
-        prompts = f" Give a the answer to the below questions as truthfully and in as detailed in the form of sentences\
-        as possible as per given context only,\n\n\
-                1. What is the Victim's Name?\n\
-                2. Has any suspect been reported?\n\
-                3. List the Merchant name\n\
-                4. How was the bank notified?\n\
-                5. When was the bank notified?\n\
-                6. What is the Fraud Type?\n\
-                7. When did the fraud occur?\n\
-                8. Was the disputed amount greater than 5000 USD?\n\
-                9. What type of cards are involved?\n\
-                10. Was the police report filed?\n\
-                11. Provide a detailed summary to prove if this is a suspicious activity?\n\
-              Context: {contexts}\n\
-              Response (in readable tabular format\
-              with two columns where one column would carry the questions and the other column would have a descriptive answer to the questions asked): "
-              
+with st.spinner('Wait for it...'):
+    if st.button("Key Case Insights"):
+        if pdf_files is not None:
+            # File handling logic
+            _, docsearch = embedding_store(pdf_files)
+            queries ="Please provide the following information regarding the possible fraud case: What is the name of the customer name,\
+            has any suspect been reported, list the merchant name, how was the bank notified, when was the bank notified, what is the fraud type,\
+            when did the fraud occur, was the disputed amount greater than 5000 USD, what type of cards are involved, was the police report filed,\
+            and based on the evidence, is this a suspicious activity(Summarize all the questions asked prior to this in a detailed manner),that's the answer of\
+            whether this is a suspicious activity\
+            "
+            contexts = docsearch.similarity_search(queries, k=5) 
+            prompts = f" Give a the answer to the below questions as truthfully and in as detailed in the form of sentences\
+            as possible as per given context only,\n\n\
+                    1. What is the Victim's Name?\n\
+                    2. Has any suspect been reported?\n\
+                    3. List the Merchant name\n\
+                    4. How was the bank notified?\n\
+                    5. When was the bank notified?\n\
+                    6. What is the Fraud Type?\n\
+                    7. When did the fraud occur?\n\
+                    8. Was the disputed amount greater than 5000 USD?\n\
+                    9. What type of cards are involved?\n\
+                    10. Was the police report filed?\n\
+                    11. Provide a detailed summary to prove if this is a suspicious activity?\n\
+                Context: {contexts}\n\
+                Response (in readable tabular format\
+                with two columns where one column would carry the questions and the other column would have a descriptive answer to the questions asked): "
+                
 
-        response = usellm(prompts)
-        # memory.save_context({"input": f"{queries}"}, {"output": f"{response}"})
-        st.write(response)
-        # st.write(memory.load_memory_variables({}))
+            response = usellm(prompts)
+            # memory.save_context({"input": f"{queries}"}, {"output": f"{response}"})
+            st.write(response)
+            # st.write(memory.load_memory_variables({}))
 
-        # Convert the response in dictionary
-        prompt_conv = f" Convert the tabular data into a python dictionary\
-            context: {response}\
-            Response (give me the response in the form of a python dictionary): "
-        resp_dict = usellm(prompt_conv)
-        resp_dict_obj = json.loads(resp_dict)
-        # st.write(resp_dict_obj.items())
+            # Convert the response in dictionary
+            prompt_conv = f" Convert the tabular data into a python dictionary\
+                context: {response}\
+                Response (give me the response in the form of a python dictionary): "
+            resp_dict = usellm(prompt_conv)
+            resp_dict_obj = json.loads(resp_dict)
+            # st.write(resp_dict_obj.items())
 
 # For input box outside of template
 try:
