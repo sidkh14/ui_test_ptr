@@ -105,6 +105,11 @@ def render_pdf_as_images(pdf_file):
         pdf_images.append(img_bytes)
     pdf_document.close()
     return pdf_images
+# Setting globals
+if "visibility" not in st.session_state:
+    st.session_state.visibility = "visible"
+    st.session_state.disabled = True
+
 
 # Set Sidebar
 st.markdown("""
@@ -153,6 +158,9 @@ with st.sidebar:
         # st.subheader("Upload Case Files")
         pdf_files = st.file_uploader("Choose files", type=["pdf"], accept_multiple_files=True)
         
+        # Enabling the button
+        st.session_state.disabled = False
+
         # Show uploaded files in a dropdown
         if pdf_files:
             st.subheader("Uploaded Files👇")
@@ -294,6 +302,7 @@ def embedding_store(pdf_files):
 st.subheader('Case Checklist Snapshot')
 with st.spinner('Wait for it...'):
     if st.button("Key Case Insights"):
+        disabled=st.session_state.disabled
         if pdf_files is not None:
             # File handling logic
             _, docsearch = embedding_store(pdf_files)
