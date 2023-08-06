@@ -362,7 +362,7 @@ def LLM_Response():
     response = llm_chain.run({"query":query, "context":context})
     return response
 
-with st.spinner('Wait for it...'):      
+with st.spinner('Getting you information...'):      
     if query:
         # Text input handling logic
         #st.write("Text Input:")
@@ -463,18 +463,18 @@ with st.spinner('Wait for it...'):
         # st.write(resp_dict_obj.items())
 
 
-
-if st.button("Summarize",disabled=st.session_state.disabled):
-    # chat_history = resp_dict_obj['Summary']
-    # memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=700)
-    # memory.save_context({"input": "This is the entire chat summary"}, 
-    #                 {"output": f"{chat_history}"})
-    # conversation = ConversationChain(
-    # llm=llm, 
-    # memory = memory,
-    # verbose=True)
-    # final_opt = conversation.predict(input="Give me a detailed summary of the above texts.")
-    st.write("under-development...")
+with st.spinner('Summarization ...'):  
+    if st.button("Summarize",disabled=st.session_state.disabled):
+        # chat_history = resp_dict_obj['Summary']
+        # memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=700)
+        # memory.save_context({"input": "This is the entire chat summary"}, 
+        #                 {"output": f"{chat_history}"})
+        # conversation = ConversationChain(
+        # llm=llm, 
+        # memory = memory,
+        # verbose=True)
+        # final_opt = conversation.predict(input="Give me a detailed summary of the above texts.")
+        st.write("under-development...")
     
 
 # Footer
