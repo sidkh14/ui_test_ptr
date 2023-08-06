@@ -16,6 +16,9 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from langchain.memory import ConversationSummaryBufferMemory
+from langchain.chains.conversation.prompt import ENTITY_MEMORY_CONVERSATION_TEMPLATE
+from langchain.chains.conversation.memory import ConversationEntityMemory
+from langchain.callbacks import get_openai_callback
 from io import StringIO
 from io import BytesIO
 from usellm import Message, Options, UseLLM
