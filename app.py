@@ -301,8 +301,7 @@ def embedding_store(pdf_files):
 # Submit Button
 st.subheader('Case Checklist Snapshot')
 with st.spinner('Wait for it...'):
-    if st.button("Key Case Insights"):
-        disabled=st.session_state.disabled
+    if st.button("Key Case Insights",disabled=st.session_state.disabled):
         if pdf_files is not None:
             # File handling logic
             _, docsearch = embedding_store(pdf_files)
