@@ -353,105 +353,105 @@ def LLM_Response():
     response = llm_chain.run({"query":query, "context":context})
     return response
 
-      
-if query:
-    # Text input handling logic
-    #st.write("Text Input:")
-    #st.write(text_input)
+with st.spinner('Wait for it...'):      
+    if query:
+        # Text input handling logic
+        #st.write("Text Input:")
+        #st.write(text_input)
 
-    context_1 = docsearch.similarity_search(query, k=5)
+        context_1 = docsearch.similarity_search(query, k=5)
 
-    if query.lower() == "what is the victim's name?":
-        prompt_1 = f'''Perform Name Enitity Recognition to identify the Customer name as accurately as possible, given the context. The Customer can also be referenced as the Victim or the person with whom the Fraud has taken place.\n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\
-                      Response: '''
-
-        
-    elif query.lower() == "what is the suspect's name?":
-        prompt_1 = f'''Perform Name Enitity Recognition to identify the Suspect name as accurately as possible, given the context. Suspect is the Person who has committed the fraud with the Customer. Respond saying "The Suspect Name is not Present" if there is no suspect in the given context.\n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\
-                      Response: '''
-
-        
-    elif query.lower() == "list the merchant name":
-        prompt_1 = f'''Perform Name Enitity Recognition to identify all the Merchant Organizations as accurately as possible, given the context. A merchant is a type of business or organization that accepts payments from the customer account. Give a relevant and concise response.\n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\
-                      Response: '''
-
-        
-    elif query.lower() == "how was the bank notified?":
-        prompt_1 = f''' You need to act as a Financial analyst to identify how was the bank notified of the Supicious or Fraud event with in the given context. The means of communication can be a call, an email or in person. Give a relevant and concise response.\n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\
-                      Response: '''
-
-        
-    elif query.lower() == "when was the bank notified?":
-        prompt_1 = f''' You need to act as a Financial analyst to identify the when the bank was notified of the Fraud i.e., the disputed date. Given the context, provide a relevant and concise response.\n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\
-                      Response: '''
-
-        
-    elif query.lower() == "what type of fraud is taking place?":
-        prompt_1 = f''' You need to act as a Financial analyst to identify the type of fraud or suspicious activity has taken place amd summarize it, within the given context. Also mention the exact fraud code. Give a relevant and concise response.\n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\
-                      Response: '''
-
-        
-    elif query.lower() == "when did the fraud occur?":
-        prompt_1 = f''' You need to act as a Financial analyst to identify the when the did the fraud occur i.e., the Transaction Date. Given the context, provide a relevant and concise response.\n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\
-                      Response: '''
+        if query.lower() == "what is the victim's name?":
+            prompt_1 = f'''Perform Name Enitity Recognition to identify the Customer name as accurately as possible, given the context. The Customer can also be referenced as the Victim or the person with whom the Fraud has taken place.\n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\
+                        Response: '''
 
             
-    elif query.lower() == "was the disputed amount greater than 5000 usd?":
-        prompt_1 = f''' You need to act as a Financial analyst to identify the disputed amount and perform a mathematical calculation to check if the disputed amount is greater than 5000 or no, given the context. Give a relevant and concise response.\n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\
-                      Response: '''
-
-        
-    elif query.lower() == "what type of cards are involved?":
-        prompt_1 = f''' You need to act as a Financial analyst to identify the type of card and card's brand involved, given the context. On a higher level the card can be a Credit or Debit Card. VISA, MasterCard or American Express, Citi Group, etc. are the different brands with respect to a Credit card or Debit Card . Give a relevant and concise response.\n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\
-                      Response: '''
-
-        
-    elif query.lower() == "was the police report filed?":
-        prompt_1 = f''' You need to act as a Financial analyst to identify if the police was reported of the Fraud activity, given the context. Give a relevant and concise response.\n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\
-                      Response: '''
+        elif query.lower() == "what is the suspect's name?":
+            prompt_1 = f'''Perform Name Enitity Recognition to identify the Suspect name as accurately as possible, given the context. Suspect is the Person who has committed the fraud with the Customer. Respond saying "The Suspect Name is not Present" if there is no suspect in the given context.\n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\
+                        Response: '''
 
             
-    elif query.lower() == "Is this a valid SAR case?":
-        prompt_1 = f''' You need to act as a Financial analyst to check if this is a SAR or not, given the following context, if the transaction amount is less than 5000 USD we cannot categorize this as SAR (Suspicious activity Report).Give a relevant and concise response. \n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\
-                      Response: '''
+        elif query.lower() == "list the merchant name":
+            prompt_1 = f'''Perform Name Enitity Recognition to identify all the Merchant Organizations as accurately as possible, given the context. A merchant is a type of business or organization that accepts payments from the customer account. Give a relevant and concise response.\n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\
+                        Response: '''
 
-        
-    else:
-        prompt_1 = f'''Act as a financial analyst and give concise answer to below Question as truthfully as possible, with given Context.\n\n\
-                      Question: {query}\n\
-                      Context: {context_1}\n\                      
-                      Response: '''
+            
+        elif query.lower() == "how was the bank notified?":
+            prompt_1 = f''' You need to act as a Financial analyst to identify how was the bank notified of the Supicious or Fraud event with in the given context. The means of communication can be a call, an email or in person. Give a relevant and concise response.\n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\
+                        Response: '''
+
+            
+        elif query.lower() == "when was the bank notified?":
+            prompt_1 = f''' You need to act as a Financial analyst to identify the when the bank was notified of the Fraud i.e., the disputed date. Given the context, provide a relevant and concise response.\n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\
+                        Response: '''
+
+            
+        elif query.lower() == "what type of fraud is taking place?":
+            prompt_1 = f''' You need to act as a Financial analyst to identify the type of fraud or suspicious activity has taken place amd summarize it, within the given context. Also mention the exact fraud code. Give a relevant and concise response.\n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\
+                        Response: '''
+
+            
+        elif query.lower() == "when did the fraud occur?":
+            prompt_1 = f''' You need to act as a Financial analyst to identify the when the did the fraud occur i.e., the Transaction Date. Given the context, provide a relevant and concise response.\n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\
+                        Response: '''
+
+                
+        elif query.lower() == "was the disputed amount greater than 5000 usd?":
+            prompt_1 = f''' You need to act as a Financial analyst to identify the disputed amount and perform a mathematical calculation to check if the disputed amount is greater than 5000 or no, given the context. Give a relevant and concise response.\n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\
+                        Response: '''
+
+            
+        elif query.lower() == "what type of cards are involved?":
+            prompt_1 = f''' You need to act as a Financial analyst to identify the type of card and card's brand involved, given the context. On a higher level the card can be a Credit or Debit Card. VISA, MasterCard or American Express, Citi Group, etc. are the different brands with respect to a Credit card or Debit Card . Give a relevant and concise response.\n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\
+                        Response: '''
+
+            
+        elif query.lower() == "was the police report filed?":
+            prompt_1 = f''' You need to act as a Financial analyst to identify if the police was reported of the Fraud activity, given the context. Give a relevant and concise response.\n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\
+                        Response: '''
+
+                
+        elif query.lower() == "Is this a valid SAR case?":
+            prompt_1 = f''' You need to act as a Financial analyst to check if this is a SAR or not, given the following context, if the transaction amount is less than 5000 USD we cannot categorize this as SAR (Suspicious activity Report).Give a relevant and concise response. \n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\
+                        Response: '''
+
+            
+        else:
+            prompt_1 = f'''Act as a financial analyst and give concise answer to below Question as truthfully as possible, with given Context.\n\n\
+                        Question: {query}\n\
+                        Context: {context_1}\n\                      
+                        Response: '''
 
 
-    #prompt = PromptTemplate(template=prompt, input_variables=["query", "context"])
-    response = usellm(prompt_1) #LLM_Response()
-    text_dict[query] = response
-    # resp_dict_obj.update(text_dict)
-    st.write(response)
-    st.write(text_dict.items())
-    # st.write(resp_dict_obj.items())
+        #prompt = PromptTemplate(template=prompt, input_variables=["query", "context"])
+        response = usellm(prompt_1) #LLM_Response()
+        text_dict[query] = response
+        # resp_dict_obj.update(text_dict)
+        st.write(response)
+        st.write(text_dict.items())
+        # st.write(resp_dict_obj.items())
 
 
 
