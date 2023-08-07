@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import random,os,json
+import random,os,json,io
 import pandas as pd
 import streamlit as st
 from langchain.llms import OpenAI
@@ -532,30 +532,38 @@ with st.spinner('Summarization ...'):
         verbose=True)
         st.session_state["tmp_summary"] = conversation.predict(input="Give me a detailed summary of the above texts.")
         st.write(st.session_state["tmp_summary"] )
+
 with st.spinner("Downloading...."):
-    if st.button("Download Response", disabled=st.session_state.disabled):
-        # Create a Word document with the table and some text
-        doc = docx.Document()
-        doc.add_paragraph(st.session_state["tmp_summary"])
+# if st.button("Download Response", disabled=st.session_state.disabled):
+    # Create a Word document with the table and some text
+    doc = docx.Document()
+    doc.add_paragraph(st.session_state["tmp_summary"])
 
-        columns = list(st.session_state.tmp_table.columns)
-        table = doc.add_table(rows=1, cols=len(columns), style="Table Grid")
-        table.autofit = True
-        for col in range(len(columns)):
-            # set_cell_margins(table.cell(0, col), top=100, start=100, bottom=100, end=50) # set cell margin
-            table.cell(0, col).text = columns[col]
-        # doc.add_table(st.session_state.tmp_table.shape[0]+1, st.session_state.tmp_table.shape[1], style='Table Grid')
-        
-        for i, row in enumerate(st.session_state.tmp_table.itertuples()):
-            table_row = table.add_row().cells # add new row to table
-            for col in range(len(columns)): # iterate over each column in row and add text
-                table_row[col].text = str(row[col+1]) # avoid index by adding col+1
-        # save document
-        output_bytes = docx.Document.save(doc, 'output.docx')
-        st.download_button(label='Download Report', data=output_bytes, file_name='evidence.docx', mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    columns = list(st.session_state.tmp_table.columns)
+    table = doc.add_table(rows=1, cols=len(columns), style="Table Grid")
+    table.autofit = True
+    for col in range(len(columns)):
+        # set_cell_margins(table.cell(0, col), top=100, start=100, bottom=100, end=50) # set cell margin
+        table.cell(0, col).text = columns[col]
+    # doc.add_table(st.session_state.tmp_table.shape[0]+1, st.session_state.tmp_table.shape[1], style='Table Grid')
+    
+    for i, row in enumerate(st.session_state.tmp_table.itertuples()):
+        table_row = table.add_row().cells # add new row to table
+        for col in range(len(columns)): # iterate over each column in row and add text
+            table_row[col].text = str(row[col+1]) # avoid index by adding col+1
+    # save document
+    # output_bytes = docx.Document.save(doc, 'output.docx')
+    # st.download_button(label='Download Report', data=output_bytes, file_name='evidence.docx', mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
 
-
-        # st.write("Downloading in progress!")
+    bio = io.BytesIO()
+    doc.save(bio)
+    if doc:
+        st.download_button(
+            label="Download Report",
+            data=bio.getvalue(),
+            file_name="Report.docx",
+            mime="docx"
+        )
 
 # Adding Radio button
 
