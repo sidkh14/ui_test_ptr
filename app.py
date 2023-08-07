@@ -330,6 +330,7 @@ st.subheader('Key Questions')
 # Create a Pandas DataFrame with your data
 data = {'Questions': [" What is the Victim's Name?",' Has any suspect been reported?',' List the Merchant name',' How was the bank notified?',' When was the bank notified?',' What is the Fraud Type?',' When did the fraud occur?',' Was the disputed amount greater than 5000 USD?',' What type of cards are involved?',' Was the police report filed?']}
 df_fixed = pd.DataFrame(data)
+df_fixed.index = df_fixed.index +1
 # Create a checkbox to show/hide the table
 show_table = st.checkbox('Show Table')
 # Show the table if the checkbox is ticked
