@@ -8,6 +8,7 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 import openai 
 import fitz
+import docx
 from gtts import gTTS
 import PyPDF2
 from PyPDF2 import PdfReader
@@ -123,7 +124,7 @@ if "stored_session" not in st.session_state:
 if "tmp_table" not in st.session_state:
     st.session_state.tmp_table=pd.DataFrame()
 if "tmp_summary" not in st.session_state:
-    st.session_state["tmp_summary"] = {}
+    st.session_state["tmp_summary"] = ''
 
 
 # Set Sidebar
@@ -526,11 +527,22 @@ with st.spinner('Summarization ...'):
         llm=llm, 
         memory = memory,
         verbose=True)
-        final_opt = conversation.predict(input="Give me a detailed summary of the above texts.")
-        st.write(final_opt)
+        st.session_state["tmp_summary"] = conversation.predict(input="Give me a detailed summary of the above texts.")
+        st.write(st.session_state["tmp_summary"] )
 with st.spinner("Downloading...."):
     if st.button("Download Response", disabled=st.session_state.disabled):
-        st.write("Downloading in progress!")
+        # Create a Word document with the table and some text
+        doc = docx.Document()
+        doc.add_paragraph(st.session_state["tmp_summary"])
+        doc.add_table(st.session_state.tmp_table.shape[0]+1, st.session_state.tmp_table.shape[1], style='Table Grid')
+        for i in range(st.session_state.tmp_table.shape[0]):
+            for j in range(st.session_state.tmp_table.shape[1]):
+                doc.tables[0].cell(i+1, j).text = str(df.iloc[i, j])
+        output_bytes = docx.Document.save(output, 'output.docx')
+        st.download_button(label='Download Report', data=output_bytes, file_name='evidence.docx', mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+
+
+        # st.write("Downloading in progress!")
 
 # Adding Radio button
 
