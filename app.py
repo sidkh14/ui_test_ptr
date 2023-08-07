@@ -330,7 +330,7 @@ col1, col2, col3,col4 = st.columns(4)
 with col1:
     st.subheader('Key Questions')
 # Create a Pandas DataFrame with your data
-with col2:
+with col3:
     data = {'Questions': [" What is the Victim's Name?",' Has any suspect been reported?',' List the Merchant name',' How was the bank notified?',' When was the bank notified?',' What is the Fraud Type?',' When did the fraud occur?',' Was the disputed amount greater than 5000 USD?',' What type of cards are involved?',' Was the police report filed?']}
     df_fixed = pd.DataFrame(data)
     df_fixed.index = df_fixed.index +1
