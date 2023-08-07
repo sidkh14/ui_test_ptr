@@ -326,7 +326,7 @@ def embedding_store(pdf_files):
     return docs, docsearch
 
 # Submit Button
-st.subheader('Case Questions')
+st.subheader('Key Questions')
 with st.spinner('Wait for it...'):
     if st.button("Key Case Insights",disabled=st.session_state.disabled):
         if pdf_files is not None:
