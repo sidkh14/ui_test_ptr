@@ -327,6 +327,15 @@ def embedding_store(pdf_files):
 
 # Submit Button
 st.subheader('Key Questions')
+# Create a Pandas DataFrame with your data
+data = {'Questions': [' What is the Victim's Name?',' Has any suspect been reported?',' List the Merchant name',' How was the bank notified?',' When was the bank notified?',' What is the Fraud Type?',' When did the fraud occur?',' Was the disputed amount greater than 5000 USD?',' What type of cards are involved?',' Was the police report filed?']}
+df_fixed = pd.DataFrame(data)
+# Create a checkbox to show/hide the table
+show_table = st.checkbox('Show Table')
+# Show the table if the checkbox is ticked
+if show_table:
+    st.write(df_fixed)
+
 with st.spinner('Wait for it...'):
     if st.button("Key Case Insights",disabled=st.session_state.disabled):
         if pdf_files is not None:
@@ -351,7 +360,6 @@ with st.spinner('Wait for it...'):
                     8. Was the disputed amount greater than 5000 USD?\n\
                     9. What type of cards are involved?\n\
                     10. Was the police report filed?\n\
-                    11. Provide a detailed summary to prove if this is a suspicious activity?\n\
                 Context: {contexts}\n\
                 Response (in readable tabular format\
                 with two columns where one column would carry the questions and the other column would have a descriptive answer to the questions asked): "
