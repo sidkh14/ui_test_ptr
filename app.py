@@ -332,7 +332,7 @@ data = {'Questions': [" What is the Victim's Name?",' Has any suspect been repor
 df_fixed = pd.DataFrame(data)
 df_fixed.index = df_fixed.index +1
 # Create a checkbox to show/hide the table
-show_table = st.checkbox('Show Table')
+show_table = st.checkbox('Show the key questions!')
 # Show the table if the checkbox is ticked
 if show_table:
     st.write(df_fixed)
@@ -505,7 +505,7 @@ with st.spinner('Getting you information...'):
         # st.write(text_dict.items())
         st.session_state["tmp_table"] = pd.concat([st.session_state.tmp_table, df], ignore_index=True)
         st.session_state.tmp_table.drop_duplicates()
-        st.table(st.session_state.tmp_table)
+        # st.table(st.session_state.tmp_table)
 
 
 with st.spinner('Summarization ...'):  
