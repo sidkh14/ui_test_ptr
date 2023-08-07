@@ -167,32 +167,32 @@ with st.sidebar:
     options = ["Select a Case", "SAR-2023-24680", "SAR-2023-13579", "SAR-2023-97531", "SAR-2023-86420", "SAR-2023-24681"]
     selected_option = st.sidebar.selectbox("", options)
 
-    # Redirect to Merge PDFs page when "Merge PDFs" is selected
-    if selected_option == "SAR-2023-24680":
-        # st.header("Merge Documents")
-        # st.write("Upload multiple document files and merge them into one doc.")
+# Redirect to Merge PDFs page when "Merge PDFs" is selected
+if selected_option == "SAR-2023-24680":
+    # st.header("Merge Documents")
+    # st.write("Upload multiple document files and merge them into one doc.")
 
-        # Upload PDF files
-        # st.subheader("Upload Case Files")
-        pdf_files = st.file_uploader("Choose files", type=["pdf"], accept_multiple_files=True)
+    # Upload PDF files
+    # st.subheader("Upload Case Files")
+    pdf_files = st.file_uploader("Choose files", type=["pdf"], accept_multiple_files=True)
 
-        # Show uploaded files in a dropdown
-        if pdf_files:
-            st.subheader("Uploaded Files👇")
-            file_names = [file.name for file in pdf_files]
-            selected_file = st.selectbox("Select a file", file_names)
-            # Enabling the button
-            st.session_state.disabled = False
-            # Display selected PDF contents
-            if selected_file:
-                selected_pdf = [pdf for pdf in pdf_files if pdf.name == selected_file][0]
-                pdf_images = render_pdf_as_images(selected_pdf)
-                st.subheader(f"Contents of {selected_file}")
-                for img_bytes in pdf_images:
-                    st.image(img_bytes, use_column_width=True)
-    else:
-        # Disabling the button
-        st.session_state.disabled = True
+    # Show uploaded files in a dropdown
+    if pdf_files:
+        st.subheader("Uploaded Files")
+        file_names = [file.name for file in pdf_files]
+        selected_file = st.selectbox("Select a file", file_names)
+        # Enabling the button
+        st.session_state.disabled = False
+        # Display selected PDF contents
+        if selected_file:
+            selected_pdf = [pdf for pdf in pdf_files if pdf.name == selected_file][0]
+            pdf_images = render_pdf_as_images(selected_pdf)
+            st.subheader(f"Contents of {selected_file}")
+            for img_bytes in pdf_images:
+                st.image(img_bytes, use_column_width=True)
+else:
+    # Disabling the button
+    st.session_state.disabled = True
 
 
 model_name = "sentence-transformers/all-MiniLM-L6-v2"
