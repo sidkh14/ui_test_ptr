@@ -501,6 +501,12 @@ with st.spinner('Summarization ...'):
         verbose=True)
         final_opt = conversation.predict(input="Give me a detailed summary of the above texts.")
         st.write(final_opt)
+with st.spinner("Downloading...."):
+    if st.button("Download your response,", disabled=st.session_state.disabled):
+        st.write("Downloading in progress!")
+
+# Adding Radio button
+
 
 # Allow the user to clear all stored conversation sessions
 # if st.button("Reset Session"):
