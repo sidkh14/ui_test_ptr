@@ -385,7 +385,7 @@ except Exception:
 
 # Text Input
 
-st.subheader("Ask Case Questions")
+st.subheader("Ask Additional Questions")
 query = st.text_input('Please ask below the additional case questions.',disabled=st.session_state.disabled)
 text_dict = {}
 
