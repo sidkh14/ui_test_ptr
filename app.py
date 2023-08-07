@@ -478,8 +478,8 @@ with st.spinner('Getting you information...'):
         text_dict[query] = response
         # resp_dict_obj.update(text_dict)
         st.write(response)
-        df = pd.DataFrame(text_dict.items(), columns=['Question','Answer'])
-        st.session_state.tmp_table = pd.concat([tmp_table, tmp_table], ignore_index=True)
+        # df = pd.DataFrame(text_dict.items(), columns=['Question','Answer'])
+        # st.session_state.tmp_table = pd.concat([tmp_table, tmp_table], ignore_index=True)
         st.write(text_dict.items())
         st.table(tmp_table)
 
