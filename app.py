@@ -358,7 +358,7 @@ with st.spinner('Wait for it...'):
             resp_dict = usellm(prompt_conv)
             resp_dict_obj = json.loads(resp_dict)
             tmp_table = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
-            # st.write(resp_dict_obj.items())
+            st.table(tmp_table)
 
 # For input box outside of template
 try:
