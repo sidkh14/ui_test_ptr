@@ -489,17 +489,17 @@ with st.spinner('Getting you information...'):
 
 
 with st.spinner('Summarization ...'):  
-    if st.button("Summarize",disabled=st.session_state.disabled):
-        summ_dict = st.session_state.tmp_table.set_index('Question')['Answer'].to_dict()
-        # chat_history = resp_dict_obj['Summary']
-        memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=700)
-        memory.save_context({"input": "This is the entire chat summary"}, 
-                        {"output": f"{summ_dict}"})
-        conversation = ConversationChain(
-        llm=llm, 
-        memory = memory,
-        verbose=True)
-        final_opt = conversation.predict(input="Give me a detailed summary of the above texts.")
+    # if st.button("Summarize",disabled=st.session_state.disabled):
+    #     summ_dict = st.session_state.tmp_table.set_index('Question')['Answer'].to_dict()
+    #     # chat_history = resp_dict_obj['Summary']
+    #     memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=700)
+    #     memory.save_context({"input": "This is the entire chat summary"}, 
+    #                     {"output": f"{summ_dict}"})
+    #     conversation = ConversationChain(
+    #     llm=llm, 
+    #     memory = memory,
+    #     verbose=True)
+    #     final_opt = conversation.predict(input="Give me a detailed summary of the above texts.")
         st.write("final_opt")
 
 # Allow the user to clear all stored conversation sessions
