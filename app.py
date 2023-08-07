@@ -478,7 +478,10 @@ with st.spinner('Summarization ...'):
         # verbose=True)
         # final_opt = conversation.predict(input="Give me a detailed summary of the above texts.")
         st.write("under-development...")
-    
+# Allow the user to clear all stored conversation sessions
+if st.session_state.stored_session:   
+    if st.sidebar.button("Clear-all"):
+        del st.session_state.stored_session   
 
 # Footer
 st.markdown(
