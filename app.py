@@ -379,7 +379,7 @@ with st.spinner('Wait for it...'):
             # st.write(response)
             # st.write(memory.load_memory_variables({}))
 
-            # Convert the response in dictionary from table
+            # Convert the response in dictionary from tbl
             prompt_conv = f" Convert the tabular data into a python dictionary\
                 context: {response}\
                 Response (give me the response in the form of a python dictionary with questions exactly as it is): "
