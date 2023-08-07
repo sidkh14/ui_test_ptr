@@ -357,7 +357,7 @@ with st.spinner('Wait for it...'):
                 Response (give me the response in the form of a python dictionary with questions exactly as it is): "
             resp_dict = usellm(prompt_conv)
             resp_dict_obj = json.loads(resp_dict)
-            st.session_state.tmp_table = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
+            st.session_state["tmp_table"] = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
             st.session_state.tmp_table.Question = tmp_table.Question.apply(lambda x: x.split(".")[1])
             st.session_state.tmp_table.index = st.session_state.tmp_table.index + 1
             st.table(st.session_state.tmp_table)
