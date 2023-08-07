@@ -486,9 +486,9 @@ with st.spinner('Summarization ...'):
         st.write("under-development...")
 
 # Allow the user to clear all stored conversation sessions
-if st.button("Reset Session"):
-    reset_session_state()
-    pdf_files.clear()
+# if st.button("Reset Session"):
+#     reset_session_state()
+#     pdf_files.clear()
 
 # Footer
 st.markdown(
