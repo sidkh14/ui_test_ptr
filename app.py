@@ -356,13 +356,14 @@ with st.spinner('Wait for it...'):
                 context: {response}\
                 Response (give me the response in the form of a python dictionary with questions exactly as it is): "
             resp_dict = usellm(prompt_conv)
-            resp_dict_obj = json.loads(resp_dict)
-            res_df = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
-            res_df.Question = res_df.Question.apply(lambda x: x.split(".")[1])
-            res_df.index = res_df.index + 1
-            st.table(res_df)
-            # st.write(resp_dict_obj)
-            st.session_state["tmp_table"] = pd.concat([st.session_state.tmp_table, res_df], ignore_index=True)
+            st.write(resp_dict)
+            # resp_dict_obj = json.loads(resp_dict)
+            # res_df = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
+            # res_df.Question = res_df.Question.apply(lambda x: x.split(".")[1])
+            # res_df.index = res_df.index + 1
+            # st.table(res_df)
+            # # st.write(resp_dict_obj)
+            # st.session_state["tmp_table"] = pd.concat([st.session_state.tmp_table, res_df], ignore_index=True)
 
 # For input box outside of template
 try:
