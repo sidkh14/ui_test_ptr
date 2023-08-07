@@ -326,7 +326,7 @@ def embedding_store(pdf_files):
     return docs, docsearch
 
 # Creating header
-col1, col2, col3,col4 = st.columns(4)
+col1, col2, col3 = st.columns(3)
 with col1:
     st.subheader('Key Questions')
 # Create a Pandas DataFrame with your data
