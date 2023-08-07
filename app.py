@@ -346,7 +346,7 @@ with st.spinner('Wait for it...'):
                 with two columns where one column would carry the questions and the other column would have a descriptive answer to the questions asked): "
                 
 
-            # response = usellm(prompts)
+            response = usellm(prompts)
             # memory.save_context({"input": f"{queries}"}, {"output": f"{response}"})
             # st.write(response)
             # st.write(memory.load_memory_variables({}))
