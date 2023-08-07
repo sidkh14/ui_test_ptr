@@ -388,6 +388,7 @@ with st.spinner('Wait for it...'):
             st.table(res_df)
             # st.write(resp_dict_obj)
             st.session_state["tmp_table"] = pd.concat([st.session_state.tmp_table, res_df], ignore_index=True)
+st.markdown("---")
 
 # For input box outside of template
 try:
