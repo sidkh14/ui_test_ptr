@@ -354,11 +354,12 @@ with st.spinner('Wait for it...'):
             # Convert the response in dictionary
             prompt_conv = f" Convert the tabular data into a python dictionary\
                 context: {response}\
-                Response (give me the response in the form of a python dictionary): "
+                Response (give me the response in the form of a python dictionary with questions exactly as it is): "
             resp_dict = usellm(prompt_conv)
             resp_dict_obj = json.loads(resp_dict)
-            tmp_table = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
-            st.table(tmp_table)
+            # tmp_table = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
+            # st.table(tmp_table)
+            st.write(resp_dict_obj)
 
 # For input box outside of template
 try:
