@@ -161,7 +161,8 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     # Add the app name
-    st.sidebar.header("SARA")
+    st.sidebar.markdown('<p class="big-font">SARA</p>', unsafe_allow_html=True)
+    # st.sidebar.header("SARA")
     # Add a single dropdown
     options = ["Select a Case", "SAR-2023-24680", "SAR-2023-13579", "SAR-2023-97531", "SAR-2023-86420", "SAR-2023-24681"]
     selected_option = st.sidebar.selectbox("", options)
@@ -303,6 +304,14 @@ text_splitter = RecursiveCharacterTextSplitter(
 #     docsearch = FAISS.from_documents(docs, hf_embeddings)
 #     return docs, docsearch
 
+# Addding markdown styles(Global)
+st.markdown("""
+<style>
+.big-font {
+    font-size:300px !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 @st.cache_data
 def embedding_store(pdf_files):
@@ -494,17 +503,17 @@ with st.spinner('Summarization ...'):
     if st.button("Summarize",disabled=st.session_state.disabled):
         summ_dict = st.session_state.tmp_table.set_index('Question')['Answer'].to_dict()
         # chat_history = resp_dict_obj['Summary']
-        memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=700)
+        memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=300)
         memory.save_context({"input": "This is the entire chat summary"}, 
                         {"output": f"{summ_dict}"})
         conversation = ConversationChain(
         llm=llm, 
         memory = memory,
         verbose=True)
-        final_opt = conversation.predict(input="Give me a detailed summary of the above texts in bullet points.")
+        final_opt = conversation.predict(input="Give me a detailed summary of the above texts.")
         st.write(final_opt)
 with st.spinner("Downloading...."):
-    if st.button("Download your response,", disabled=st.session_state.disabled):
+    if st.button("Download Response", disabled=st.session_state.disabled):
         st.write("Downloading in progress!")
 
 # Adding Radio button
