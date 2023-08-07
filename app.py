@@ -358,6 +358,7 @@ with st.spinner('Wait for it...'):
             resp_dict = usellm(prompt_conv)
             resp_dict_obj = json.loads(resp_dict)
             tmp_table = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
+            tmp_table.Question = tmp_table.Question.str.split(".")[1]
             st.table(tmp_table)
             # st.write(resp_dict_obj)
 
