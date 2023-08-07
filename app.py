@@ -335,11 +335,11 @@ with col2:
     df_fixed = pd.DataFrame(data)
     df_fixed.index = df_fixed.index +1
     # Create a checkbox to show/hide the table
-    show_table = st.checkbox('Show questions!')
+    show_table = st.checkbox('Show Questions')
     # Show the table if the checkbox is ticked
     if show_table:
         # st.write(df_fixed)
-        st.dataframe(df_fixed, width=500)
+        st.dataframe(df_fixed, width=750)
 
 with st.spinner('Wait for it...'):
     if st.button("Key Case Insights",disabled=st.session_state.disabled):
