@@ -76,6 +76,10 @@ def merge_and_extract_text(pdf_list):
     
     return ' '.join(all_text)
 
+def reset_session_state():
+    session_state = st.session_state
+    session_state.clear()
+
 # def merge_and_extract_text(pdf_list):
 #     merged_pdf = fitz.open()
 #     # Merge the PDF files
@@ -481,10 +485,10 @@ with st.spinner('Summarization ...'):
         # verbose=True)
         # final_opt = conversation.predict(input="Give me a detailed summary of the above texts.")
         st.write("under-development...")
+
 # Allow the user to clear all stored conversation sessions
-if st.session_state.stored_session:   
-    if st.sidebar.button("Clear-all"):
-        del st.session_state.stored_session   
+if st.button("Reset Session"):
+    reset_session_state()
 
 # Footer
 st.markdown(
