@@ -161,7 +161,7 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     # Add the app name
-    st.sidebar.markdown("**SARA**")
+    st.sidebar.markdown("##SARA")
     # Add a single dropdown
     options = ["Select a Case", "Case 1", "Case 2", "Case 3", "Case 4", "Case 5"]
     selected_option = st.sidebar.selectbox("Select a Case No.", options)
