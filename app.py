@@ -163,7 +163,7 @@ with st.sidebar:
     # Add the app name
     st.sidebar.header("SARA")
     # Add a single dropdown
-    options = ["Select a Case", "SAR-2023-24680", "SAR-2023-13579", "SAR-2023-97531", "SAR-2023-86420", "SAR-2023-24681"]
+    options = ["", "SAR-2023-24680", "SAR-2023-13579", "SAR-2023-97531", "SAR-2023-86420", "SAR-2023-24681"]
     selected_option = st.sidebar.selectbox("Select a Case", options)
 
     # Redirect to Merge PDFs page when "Merge PDFs" is selected
