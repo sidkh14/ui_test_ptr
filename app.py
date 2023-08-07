@@ -117,8 +117,7 @@ def render_pdf_as_images(pdf_file):
 if "visibility" not in st.session_state:
     st.session_state.visibility = "visible"
     st.session_state.disabled = True
-if "stored_session" not in st.session_state.stored_session:
-    st.session_state.stored_session = " "
+
 
 
 # Set Sidebar
