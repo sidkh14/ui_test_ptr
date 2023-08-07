@@ -120,7 +120,7 @@ if "visibility" not in st.session_state:
 if "stored_session" not in st.session_state:
     st.session_state["stored_session"] = []
 if "tmp" not in st.session_state:
-    st.session_state["tmp"] = ""
+    st.session_state["tmp"] = {}
 
 
 # Set Sidebar
