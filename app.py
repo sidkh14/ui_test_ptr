@@ -499,7 +499,7 @@ with st.spinner('Summarization ...'):
         llm=llm, 
         memory = memory,
         verbose=True)
-        final_opt = conversation.predict(input="Give me a detailed summary of the above texts.")
+        final_opt = conversation.predict(input="Give me a detailed summary of the above texts in bullet points.")
         st.write(final_opt)
 with st.spinner("Downloading...."):
     if st.button("Download your response,", disabled=st.session_state.disabled):
