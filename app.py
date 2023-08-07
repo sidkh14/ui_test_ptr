@@ -160,6 +160,9 @@ with st.sidebar:
     </nav>
     """, unsafe_allow_html=True)
 
+    # Add the image to the sidebar below options
+    st.sidebar.image("MicrosoftTeams-image (7).png", use_column_width=True)
+
     # Add the app name
     st.sidebar.markdown('<p class="big-font">SARA</p>', unsafe_allow_html=True)
     # st.sidebar.header("SARA")
