@@ -135,7 +135,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("SAR Evidence Processor")
+st.title("Suspicious Activity Reporting Assistant")
 st.markdown('---')
 with st.sidebar:
     # st.sidebar.write("This is :blue[test]")
@@ -161,13 +161,13 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     # Add the app name
-    st.sidebar.markdown("##SARA")
+    st.sidebar.header("SARA")
     # Add a single dropdown
-    options = ["Select a Case", "Case 1", "Case 2", "Case 3", "Case 4", "Case 5"]
-    selected_option = st.sidebar.selectbox("Select a Case No.", options)
+    options = ["Select a Case", "SAR-2023-24680", "SAR-2023-13579", "SAR-2023-97531", "SAR-2023-86420", "SAR-2023-24681"]
+    selected_option = st.sidebar.selectbox("Select a Case", options)
 
     # Redirect to Merge PDFs page when "Merge PDFs" is selected
-    if selected_option == "Case 1":
+    if selected_option == "SAR-2023-24680":
         # st.header("Merge Documents")
         # st.write("Upload multiple document files and merge them into one doc.")
 
@@ -317,7 +317,7 @@ def embedding_store(pdf_files):
     return docs, docsearch
 
 # Submit Button
-st.subheader('Case Checklist Snapshot')
+st.subheader('Case Questions')
 with st.spinner('Wait for it...'):
     if st.button("Key Case Insights",disabled=st.session_state.disabled):
         if pdf_files is not None:
