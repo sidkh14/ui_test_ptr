@@ -339,7 +339,7 @@ with col2:
     # Show the table if the checkbox is ticked
     if show_table:
         # st.write(df_fixed)
-        st.dataframe(df_fixed, width=750)
+        st.dataframe(df_fixed, width=1000)
 
 with st.spinner('Wait for it...'):
     if st.button("Key Case Insights",disabled=st.session_state.disabled):
