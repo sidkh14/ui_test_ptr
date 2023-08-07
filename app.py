@@ -346,9 +346,9 @@ with st.spinner('Wait for it...'):
                 with two columns where one column would carry the questions and the other column would have a descriptive answer to the questions asked): "
                 
 
-            response = usellm(prompts)
+            # response = usellm(prompts)
             # memory.save_context({"input": f"{queries}"}, {"output": f"{response}"})
-            st.write(response)
+            # st.write(response)
             # st.write(memory.load_memory_variables({}))
 
             # Convert the response in dictionary
@@ -359,6 +359,7 @@ with st.spinner('Wait for it...'):
             resp_dict_obj = json.loads(resp_dict)
             tmp_table = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
             tmp_table.Question = tmp_table.Question.apply(lambda x: x.split(".")[1])
+            tmp_table.index = tmp_table.index + 1
             st.table(tmp_table)
             # st.write(resp_dict_obj)
 
