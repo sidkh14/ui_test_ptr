@@ -484,6 +484,7 @@ with st.spinner('Getting you information...'):
         # st.write(text_dict.items())
         st.session_state["tmp_table"] = pd.concat([st.session_state.tmp_table, df], ignore_index=True)
         st.session_state.tmp_table.drop_duplicates()
+        st.session_state.index = st.session_state.index + 1
         st.table(st.session_state.tmp_table)
 
 
