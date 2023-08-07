@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import random,os,json
+import pandas as pd
 import streamlit as st
 from langchain.llms import OpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -119,8 +120,10 @@ if "visibility" not in st.session_state:
     st.session_state.disabled = True
 if "stored_session" not in st.session_state:
     st.session_state["stored_session"] = []
-if "tmp" not in st.session_state:
-    st.session_state["tmp"] = {}
+if "tmp_table" not in st.session_state:
+    st.session_state.tmp_table=pd.DataFrame()
+if "tmp_summary" not in st.session_state:
+    st.session_state["tmp_summary"] = {}
 
 
 # Set Sidebar
@@ -354,6 +357,7 @@ with st.spinner('Wait for it...'):
                 Response (give me the response in the form of a python dictionary): "
             resp_dict = usellm(prompt_conv)
             resp_dict_obj = json.loads(resp_dict)
+            tmp_table = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
             # st.write(resp_dict_obj.items())
 
 # For input box outside of template
