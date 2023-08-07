@@ -537,11 +537,21 @@ with st.spinner("Downloading...."):
         # Create a Word document with the table and some text
         doc = docx.Document()
         doc.add_paragraph(st.session_state["tmp_summary"])
-        doc.add_table(st.session_state.tmp_table.shape[0]+1, st.session_state.tmp_table.shape[1], style='Table Grid')
-        for i in range(st.session_state.tmp_table.shape[0]):
-            for j in range(st.session_state.tmp_table.shape[1]):
-                doc.tables[0].cell(i+1, j).text = str(df.iloc[i, j])
-        output_bytes = docx.Document.save(output, 'output.docx')
+
+        columns = list(st.session_state.tmp_table.columns)
+        table = doc.add_table(rows=1, cols=len(columns), style="Table Grid")
+        table.autofit = True
+        for col in range(len(columns)):
+            # set_cell_margins(table.cell(0, col), top=100, start=100, bottom=100, end=50) # set cell margin
+            table.cell(0, col).text = columns[col]
+        # doc.add_table(st.session_state.tmp_table.shape[0]+1, st.session_state.tmp_table.shape[1], style='Table Grid')
+        
+        for i, row in enumerate(st.session_state.tmp_table.itertuples()):
+            table_row = table.add_row().cells # add new row to table
+            for col in range(len(columns)): # iterate over each column in row and add text
+                table_row[col].text = str(row[col+1]) # avoid index by adding col+1
+        # save document
+        output_bytes = docx.Document.save(doc, 'output.docx')
         st.download_button(label='Download Report', data=output_bytes, file_name='evidence.docx', mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
 
 
