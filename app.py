@@ -338,7 +338,8 @@ with col2:
     show_table = st.checkbox('Show questions!')
     # Show the table if the checkbox is ticked
     if show_table:
-        st.write(df_fixed)
+        # st.write(df_fixed)
+        st.dataframe(df_fixed, width=500)
 
 with st.spinner('Wait for it...'):
     if st.button("Key Case Insights",disabled=st.session_state.disabled):
