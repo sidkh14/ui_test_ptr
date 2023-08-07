@@ -481,7 +481,7 @@ with st.spinner('Getting you information...'):
         # df = pd.DataFrame(text_dict.items(), columns=['Question','Answer'])
         # st.session_state.tmp_table = pd.concat([tmp_table, tmp_table], ignore_index=True)
         st.write(text_dict.items())
-        st.table(tmp_table)
+        st.table(st.session_state.tmp_table)
 
 
 with st.spinner('Summarization ...'):  
