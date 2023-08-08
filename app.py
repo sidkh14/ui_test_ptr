@@ -382,12 +382,12 @@ with st.spinner('Wait for it...'):
 
 
             # Convert the response in dictionary from tbl
-            prompt_conv = f" Convert the tabular data into a python dictionary\
-                context: {response}\
-                Response (give me the response in the form of a python dictionary with questions exactly as it is): "
-            resp_dict = usellm(prompt_conv)
+            # prompt_conv = f" Convert the tabular data into a python dictionary\
+            #     context: {response}\
+            #     Response (give me the response in the form of a python dictionary with questions exactly as it is): "
+            # resp_dict = usellm(prompt_conv)
             # st.write(resp_dict)
-            resp_dict_obj = json.loads(resp_dict)
+            resp_dict_obj = json.loads(response)
             res_df = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
             try:
                 res_df.Question = res_df.Question.apply(lambda x: x.split(".")[1])
