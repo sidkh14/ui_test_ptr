@@ -570,8 +570,10 @@ with st.spinner("Downloading...."):
 # if st.button("Download Response", disabled=st.session_state.disabled):
     # Create a Word document with the table and some text
     doc = docx.Document()
+    doc.add_heading(f"Case No.: {st.session_state.case_num}",0)
+    doc.add_heading('Summary', level=2)
     doc.add_paragraph(st.session_state["tmp_summary"])
-
+    doc.add_heading('Summary', level=2)
     columns = list(st.session_state.tmp_table.columns)
     table = doc.add_table(rows=1, cols=len(columns), style="Table Grid")
     table.autofit = True
