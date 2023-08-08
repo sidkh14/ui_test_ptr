@@ -610,7 +610,7 @@ with st.spinner("Downloading...."):
 # Adding Radio button
 st.header("Make Decision")
 selected_rad = st.radio("Select an option", ["Approved", "Decline", "Refer for review"])
-if selected_rad in ("Approved", "Decline")
+if selected_rad in ("Approved", "Decline"):
     st.write("Thanks, Your response has been recorded!")
 else:
     email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
