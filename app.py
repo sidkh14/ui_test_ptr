@@ -340,14 +340,14 @@ with col1:
     df_fixed.index = df_fixed.index +1
 with col2:
     # Create a checkbox to show/hide the table
-    show_table = toggle(label='', value=False)
-    st.markdown("""
-    <style>
-        .streamlit-toggle-label {
-            font-size: 0.3rem;
-        }
-    </style>
-    """, unsafe_allow_html=True)
+    show_table = tog.st_toggle_switch(label="Label", 
+                    key="Key1", 
+                    default_value=False, 
+                    label_after = False, 
+                    inactive_color = '#D3D3D3', 
+                    active_color="#11567f", 
+                    track_color="#29B5E8"
+                    )
     # Show the table if the checkbox is ticked
     if show_table:
         # st.write(df_fixed)
