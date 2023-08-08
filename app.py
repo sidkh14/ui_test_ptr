@@ -338,7 +338,7 @@ with col2:
     df_fixed = pd.DataFrame(data)
     df_fixed.index = df_fixed.index +1
     # Create a checkbox to show/hide the table
-    show_table = st.checkbox('Show Questions')
+    show_table = toggle(label='Show Table', value=False)
     # Show the table if the checkbox is ticked
     if show_table:
         # st.write(df_fixed)
