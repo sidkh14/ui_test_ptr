@@ -174,6 +174,24 @@ with st.sidebar:
     </nav>
     """, unsafe_allow_html=True)
 
+    st.markdown("""
+    <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark" style="background-color: #000000;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link disabled" href="#">
+                <img src="	https://www.exlservice.com/themes/exl_service/exl_logo_rgb_orange_pos_94.png" width="50" height="30" alt="">
+                <span class="sr-only">(current)</span>
+            </a>
+        </li>
+        </ul>
+    </div>
+    </nav>
+    """, unsafe_allow_html=True)
+
     # Add the app name
     st.sidebar.markdown('<p class="big-font">SARA</p>', unsafe_allow_html=True)
     # st.sidebar.header("SARA")
