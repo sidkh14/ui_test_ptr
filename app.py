@@ -344,7 +344,7 @@ with col2:
     st.markdown("""
     <style>
         .streamlit-toggle-label {
-            font-size: 0.8rem;
+            font-size: 0.3rem;
         }
     </style>
     """, unsafe_allow_html=True)
