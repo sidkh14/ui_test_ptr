@@ -139,15 +139,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Applying to download button -> download_button
-st.markdown("""
-    <style>
-        .stButton download_button {
-            width: 200px;
-            height: 50px;
-        }
-    </style>
-""", unsafe_allow_html=True)
 
 # Set Sidebar
 st.markdown("""
@@ -598,6 +589,15 @@ with st.spinner("Downloading...."):
 
     bio = io.BytesIO()
     doc.save(bio)
+    # Applying to download button -> download_button
+    st.markdown("""
+        <style>
+            .stButton download_button {
+                width: 200px;
+                height: 50px;
+            }
+        </style>
+    """, unsafe_allow_html=True)
     if doc:
         st.download_button(
             label="Download Report",
