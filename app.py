@@ -133,8 +133,8 @@ if "case_num" not in st.session_state:
 st.markdown("""
     <style>
         .stButton button {
-            width: 150px;
-            height: 30px;
+            width: 145px;
+            height: 35px;
         }
     </style>
 """, unsafe_allow_html=True)
