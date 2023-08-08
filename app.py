@@ -330,7 +330,7 @@ def embedding_store(pdf_files):
     return docs, docsearch
 
 # Creating header
-col1, col2 = st.columns(2)
+col1 = st.columns(1)
 with col1:
     st.subheader('Key Questions')
 # Create a Pandas DataFrame with your data
@@ -340,6 +340,13 @@ with col1:
     df_fixed.index = df_fixed.index +1
     # Create a checkbox to show/hide the table
     show_table = toggle(label='Show Table', value=False)
+    st.markdown("""
+    <style>
+        .streamlit-toggle-label {
+            font-size: 0.8rem;
+        }
+    </style>
+    """, unsafe_allow_html=True)
     # Show the table if the checkbox is ticked
     if show_table:
         # st.write(df_fixed)
