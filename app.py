@@ -340,7 +340,7 @@ with col1:
     df_fixed.index = df_fixed.index +1
 with col2:
     # Create a checkbox to show/hide the table
-    cols1, cols2, cols3, cols4, cols5, cols6 = st.columns([1,1,1,1,1,1])
+    cols1, cols2, cols3, cols4, cols5 = st.columns([1,1,1,1,1])
     with cols1:
         show_table = tog.st_toggle_switch(label="", 
                             key="Key1", 
