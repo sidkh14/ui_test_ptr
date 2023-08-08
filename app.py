@@ -618,7 +618,7 @@ st.markdown(
         """,
     unsafe_allow_html=True
 )
-selected_rad = st.radio("", ["Approved", "Decline", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
+selected_rad = st.radio("", ["","Approved", "Decline", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
 
 if selected_rad in ("Approved"):
     st.write("Thanks! Your response has been recorded!")
