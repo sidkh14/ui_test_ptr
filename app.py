@@ -565,7 +565,8 @@ with st.spinner("Downloading...."):
             label="Download Report",
             data=bio.getvalue(),
             file_name="Report.docx",
-            mime="docx"
+            mime="docx",
+            disabled=st.session_state.disabled
         )
 
 # Adding Radio button
