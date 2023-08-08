@@ -192,7 +192,8 @@ if selected_option == "SAR-2023-24680":
     # Upload PDF files
     # st.subheader("Upload Case Files")
     st.markdown(f"**Case No: {st.session_state.case_num}**")
-    pdf_files = st.file_uploader("Upload Evidences", type=["pdf"], accept_multiple_files=True)
+    st.header("Upload Evidence")
+    pdf_files = st.file_uploader("", type=["pdf"], accept_multiple_files=True)
 
     # Show uploaded files in a dropdown
     if pdf_files:
