@@ -190,7 +190,7 @@ if selected_option == "SAR-2023-24680":
 
     # Upload PDF files
     # st.subheader("Upload Case Files")
-    st.write(st.session_state.case_num)
+    st.write("Case No: ",st.session_state.case_num)
     pdf_files = st.file_uploader("Upload Evidences", type=["pdf"], accept_multiple_files=True)
 
     # Show uploaded files in a dropdown
