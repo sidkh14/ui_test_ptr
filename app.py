@@ -641,7 +641,7 @@ st.markdown(
             """,
         unsafe_allow_html=True
     )
-selected_rad = st.radio("Is SAR filing required?", ["opt1","Approved", "Decline", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
+selected_rad = st.radio("Is SAR filing required?", ["opt1","YES", "No", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
 if selected_rad == "Refer for review":
     email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     email_id = st.text_input("Enter your email ID")
@@ -651,12 +651,12 @@ if st.button("Submit"):
     if selected_rad in ("str_opt1"):
         st.write("")
     elif selected_rad in ("Approved"):
-        st.write("Thanks! Your response has been recorded!")
+        st.success("Thanks! Your response has been recorded!")
     elif selected_rad in ("Decline"):
-        st.write("Thanks! Your response hase been recorded")
+        st.warning("Thanks! Your response hase been recorded")
 
     else:
-        st.write("Thanks the details has been sent for further review")
+        st.info("Thanks the details has been sent for further review")
 
 # Allow the user to clear all stored conversation sessions
 # if st.button("Reset Session"):
