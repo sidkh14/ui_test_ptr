@@ -369,8 +369,8 @@ with st.spinner('Wait for it...'):
                     9. What type of cards are involved?\n\
                     10. Was the police report filed?\n\
                 Context: {contexts}\n\
-                Response (in readable tabular format\
-                with two columns where one column would carry the questions and the other column would have a descriptive answer to the questions asked): "
+                Response (in the python dictionary format\
+                where the dictionary key would carry the questions and its value would have a descriptive answer to the questions asked): "
                 
 
             response = usellm(prompts)
@@ -378,6 +378,8 @@ with st.spinner('Wait for it...'):
             # memory.save_context({"input": f"{queries}"}, {"output": f"{response}"})
             # st.write(response)
             # st.write(memory.load_memory_variables({}))
+
+
 
             # Convert the response in dictionary from tbl
             prompt_conv = f" Convert the tabular data into a python dictionary\
