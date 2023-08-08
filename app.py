@@ -340,7 +340,7 @@ with col1:
     df_fixed.index = df_fixed.index +1
 with col2:
     # Create a checkbox to show/hide the table
-    show_table = toggle(label='Show Table', value=False)
+    show_table = toggle(label='', value=False)
     st.markdown("""
     <style>
         .streamlit-toggle-label {
