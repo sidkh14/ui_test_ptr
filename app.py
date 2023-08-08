@@ -332,7 +332,7 @@ def embedding_store(pdf_files):
 # Creating header
 col1,col2 = st.columns(2)
 with col1:
-    st.subheader('Key Questions')
+    st.subheader('Preset Questionnaire')
     # Create a Pandas DataFrame with your data
 
     data = {'Questions': [" What is the Victim's Name?",' Has any suspect been reported?',' List the Merchant name',' How was the bank notified?',' When was the bank notified?',' What is the Fraud Type?',' When did the fraud occur?',' Was the disputed amount greater than 5000 USD?',' What type of cards are involved?',' Was the police report filed?']}
@@ -340,7 +340,7 @@ with col1:
     df_fixed.index = df_fixed.index +1
 with col2:
     # Create a checkbox to show/hide the table
-    cols1, cols2, cols3, cols4, cols5, cols6, cols7, cols8 = st.columns([1,1,1,1,1,1,1,1])
+    cols1, cols2, cols3, cols4, cols5, cols6, cols7 = st.columns([1,1,1,1,1,1,1])
     with cols1:
         show_table = tog.st_toggle_switch(label="", 
                             key="Key1", 
