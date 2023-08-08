@@ -619,7 +619,11 @@ st.markdown(
         unsafe_allow_html=True
     )
 selected_rad = st.radio("", ["opt1","Approved", "Decline", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
-
+    if selected_rad == "Refer for review"
+        email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        email_id = st.text_input("Enter your email ID")
+        if email_id and not re.match(email_regex, email_id):
+            st.error("Please enter a valid email ID")
 if st.button("Submit"):
     if selected_rad in ("str_opt1"):
         st.write("")
@@ -627,13 +631,9 @@ if st.button("Submit"):
         st.write("Thanks! Your response has been recorded!")
     elif selected_rad in ("Decline"):
         st.write("Thanks! Your response hase been recorded")
+
     else:
-        email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-        email_id = st.text_input("Enter your email ID")
-        if email_id and not re.match(email_regex, email_id):
-            st.error("Please enter a valid email ID")
-        else:
-            st.write("Thanks the details has been sent for further review")
+        st.write("Thanks the details has been sent for further review")
 
 # Allow the user to clear all stored conversation sessions
 # if st.button("Reset Session"):
