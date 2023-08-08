@@ -620,7 +620,7 @@ st.markdown(
 )
 selected_rad = st.radio("", ["opt1","Approved", "Decline", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
 
-if selected_file in ("str_opt1"):
+if selected_rad in ("str_opt1"):
     st.write("")
 elif selected_rad in ("Approved"):
     st.write("Thanks! Your response has been recorded!")
