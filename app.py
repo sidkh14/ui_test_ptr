@@ -126,7 +126,18 @@ if "tmp_table" not in st.session_state:
     st.session_state.tmp_table=pd.DataFrame()
 if "tmp_summary" not in st.session_state:
     st.session_state["tmp_summary"] = ''
+if "case_num" not in st.session_state:
+    st.session_state.case_num = ''
 
+# Apply CSS styling to resize the buttons
+st.markdown("""
+    <style>
+        .stButton button {
+            width: 200px;
+            height: 50px;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 # Set Sidebar
 st.markdown("""
@@ -166,19 +177,20 @@ with st.sidebar:
     st.sidebar.markdown('<p class="big-font">SARA</p>', unsafe_allow_html=True)
     # st.sidebar.header("SARA")
     # Add a single dropdown
-    options = ["Select a Case", "SAR-2023-24680", "SAR-2023-13579", "SAR-2023-97531", "SAR-2023-86420", "SAR-2023-24681"]
+    options = ["Select a Case ID", "SAR-2023-24680", "SAR-2023-13579", "SAR-2023-97531", "SAR-2023-86420", "SAR-2023-24681"]
     selected_option = st.sidebar.selectbox("", options)
     # Add the image to the sidebar below options
     st.sidebar.image("MicrosoftTeams-image (7).png", use_column_width=True)
 
 # Redirect to Merge PDFs page when "Merge PDFs" is selected
 if selected_option == "SAR-2023-24680":
+    st.session_state.case_num = "SAR-2023-24680"
     # st.header("Merge Documents")
     # st.write("Upload multiple document files and merge them into one doc.")
 
     # Upload PDF files
     # st.subheader("Upload Case Files")
-    pdf_files = st.file_uploader("Choose files", type=["pdf"], accept_multiple_files=True)
+    pdf_files = st.file_uploader("Upload Evidences", type=["pdf"], accept_multiple_files=True)
 
     # Show uploaded files in a dropdown
     if pdf_files:
@@ -197,6 +209,7 @@ if selected_option == "SAR-2023-24680":
 else:
     # Disabling the button
     st.session_state.disabled = True
+    st.session_state.case_num = selected_option
 
 
 model_name = "sentence-transformers/all-MiniLM-L6-v2"
@@ -356,7 +369,7 @@ with col2:
         st.dataframe(df_fixed, width=1000)
 
 with st.spinner('Wait for it...'):
-    if st.button("Key Case Insights",disabled=st.session_state.disabled):
+    if st.button("Generate Insights",disabled=st.session_state.disabled):
         if pdf_files is not None:
             # File handling logic
             _, docsearch = embedding_store(pdf_files)
