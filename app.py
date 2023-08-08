@@ -139,6 +139,16 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Applying to download button -> download_button
+st.markdown("""
+    <style>
+        .stButton download_button {
+            width: 200px;
+            height: 50px;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # Set Sidebar
 st.markdown("""
 <style>
