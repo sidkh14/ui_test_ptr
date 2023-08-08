@@ -183,7 +183,7 @@ with st.sidebar:
         <ul class="navbar-nav">
         <li class="nav-item active">
         <!--p style='color: white;'><b>Powered by EXL</b></p--!>
-        <p> <strong>Powered by EXL</strong> </p>
+        <p style='color: white;'> <strong>Powered by EXL</strong> </p>
             <!--a class="nav-link disabled" href="#">
                 <img src="	https://www.exlservice.com/themes/exl_service/exl_logo_rgb_orange_pos_94.png" width="50" height="30" alt="">
                 <span class="sr-only">(current)</span>
