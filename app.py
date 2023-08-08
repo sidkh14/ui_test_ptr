@@ -618,9 +618,11 @@ st.markdown(
         """,
     unsafe_allow_html=True
 )
-selected_rad = st.radio("", ["","Approved", "Decline", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
+selected_rad = st.radio("", ["str_","Approved", "Decline", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
 
-if selected_rad in ("Approved"):
+if selected_file == "str_":
+    st.write("")
+elif selected_rad in ("Approved"):
     st.write("Thanks! Your response has been recorded!")
 elif selected_rad in ("Decline"):
     st.write("Thanks! Your response hase been recorded")
