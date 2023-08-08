@@ -609,8 +609,7 @@ with st.spinner("Downloading...."):
 
 # Adding Radio button
 st.header("Make Decision")
-if st.button("Submit"):
-    st.markdown(
+st.markdown(
         """ <style>
                 div[role="radiogroup"] >  :first-child{
                     display: none !important;
@@ -619,8 +618,9 @@ if st.button("Submit"):
             """,
         unsafe_allow_html=True
     )
-    selected_rad = st.radio("", ["opt1","Approved", "Decline", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
+selected_rad = st.radio("", ["opt1","Approved", "Decline", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
 
+if st.button("Submit"):
     if selected_rad in ("str_opt1"):
         st.write("")
     elif selected_rad in ("Approved"):
