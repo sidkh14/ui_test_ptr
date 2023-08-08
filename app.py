@@ -340,14 +340,16 @@ with col1:
     df_fixed.index = df_fixed.index +1
 with col2:
     # Create a checkbox to show/hide the table
-    show_table = tog.st_toggle_switch(label="Label", 
-                    key="Key1", 
-                    default_value=False, 
-                    label_after = False, 
-                    inactive_color = '#D3D3D3', 
-                    active_color="#11567f", 
-                    track_color="#29B5E8"
-                    )
+    cols1, cols2, cols3, cols4, cols5, cols6, cols7, cols8, cols9 = st.columns([1,1,1,1,1,1,1,1,1])
+    with cols1:
+        show_table = tog.st_toggle_switch(label="", 
+                            key="Key1", 
+                            default_value=False, 
+                            label_after = False, 
+                            inactive_color = '#D3D3D3', 
+                            active_color="#11567f", 
+                            track_color="#29B5E8"
+                            )
     # Show the table if the checkbox is ticked
     if show_table:
         # st.write(df_fixed)
