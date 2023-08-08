@@ -330,27 +330,28 @@ def embedding_store(pdf_files):
     return docs, docsearch
 
 # Creating header
-# col1,col2 = st.columns(2)
-# with col1:
-st.subheader('Key Questions')
-# Create a Pandas DataFrame with your data
+col1,col2 = st.columns(2)
+with col1:
+    st.subheader('Key Questions')
+    # Create a Pandas DataFrame with your data
 
-data = {'Questions': [" What is the Victim's Name?",' Has any suspect been reported?',' List the Merchant name',' How was the bank notified?',' When was the bank notified?',' What is the Fraud Type?',' When did the fraud occur?',' Was the disputed amount greater than 5000 USD?',' What type of cards are involved?',' Was the police report filed?']}
-df_fixed = pd.DataFrame(data)
-df_fixed.index = df_fixed.index +1
-# Create a checkbox to show/hide the table
-show_table = toggle(label='Show Table', value=False)
-st.markdown("""
-<style>
-    .streamlit-toggle-label {
-        font-size: 0.8rem;
-    }
-</style>
-""", unsafe_allow_html=True)
-# Show the table if the checkbox is ticked
-if show_table:
-    # st.write(df_fixed)
-    st.dataframe(df_fixed, width=1000)
+    data = {'Questions': [" What is the Victim's Name?",' Has any suspect been reported?',' List the Merchant name',' How was the bank notified?',' When was the bank notified?',' What is the Fraud Type?',' When did the fraud occur?',' Was the disputed amount greater than 5000 USD?',' What type of cards are involved?',' Was the police report filed?']}
+    df_fixed = pd.DataFrame(data)
+    df_fixed.index = df_fixed.index +1
+with col2
+    # Create a checkbox to show/hide the table
+    show_table = toggle(label='Show Table', value=False)
+    st.markdown("""
+    <style>
+        .streamlit-toggle-label {
+            font-size: 0.8rem;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+    # Show the table if the checkbox is ticked
+    if show_table:
+        # st.write(df_fixed)
+        st.dataframe(df_fixed, width=1000)
 
 with st.spinner('Wait for it...'):
     if st.button("Key Case Insights",disabled=st.session_state.disabled):
