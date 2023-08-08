@@ -609,17 +609,19 @@ with st.spinner("Downloading...."):
 
 # Adding Radio button
 st.header("Make Decision")
-selected_rad = st.radio("", ["Approved", "Decline", "Refer for review"], index=-1)
-if selected_rad != -1:
-    if selected_rad in ("Approved", "Decline"):
-        st.write("Thanks, Your response has been recorded!")
+selected_rad = st.radio("", ["Approved", "Decline", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
+
+if selected_rad in ("Approved"):
+    st.write("Thanks! Your response has been recorded!")
+elif selected_rad in ("Decline"):
+    st.write("Thanks! Your response hase been recorded")
+else:
+    email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    email_id = st.text_input("Enter your email ID")
+    if email_id and not re.match(email_regex, email_id):
+        st.error("Please enter a valid email ID")
     else:
-        email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-        email_id = st.text_input("Enter your email ID")
-        if email_id and not re.match(email_regex, email_id):
-            st.error("Please enter a valid email ID")
-        else:
-            st.write("Thanks the details has been sent for further review")
+        st.write("Thanks the details has been sent for further review")
 
 # Allow the user to clear all stored conversation sessions
 # if st.button("Reset Session"):
