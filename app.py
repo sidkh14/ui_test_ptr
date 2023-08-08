@@ -616,8 +616,8 @@ with st.spinner("Downloading...."):
     st.markdown("""
         <style>
             .stButton download_button {
-                width: 200px;
-                height: 50px;
+                width: 400px;
+                height: 90px;
             }
         </style>
     """, unsafe_allow_html=True)
