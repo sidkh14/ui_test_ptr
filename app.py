@@ -609,7 +609,7 @@ with st.spinner("Downloading...."):
 
 # Adding Radio button
 st.header("Make Decision")
-selected_rad = st.radio("Select an option", ["Approved", "Decline", "Refer for review"])
+selected_rad = st.radio("Select an option", ["Approved", "Decline", "Refer for review"], index=-1)
 if selected_rad in ("Approved", "Decline"):
     st.write("Thanks, Your response has been recorded!")
 else:
