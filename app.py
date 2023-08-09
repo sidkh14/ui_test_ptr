@@ -185,7 +185,7 @@ with st.sidebar:
         <!--p style='color: white;'><b>Powered by EXL</b></p--!>
         <p style='color: white;'> <strong>Powered by EXL</strong> </p>
             <!--a class="nav-link disabled" href="#">
-                <img src="	https://www.exlservice.com/themes/exl_service/exl_logo_rgb_orange_pos_94.png" width="50" height="30" alt="">
+                <img src="exl_logo.png" width="50" height="30" alt="">
                 <span class="sr-only">(current)</span>
             </a--!>
         </li>
