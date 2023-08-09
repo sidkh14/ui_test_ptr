@@ -128,6 +128,8 @@ if "tmp_summary" not in st.session_state:
     st.session_state["tmp_summary"] = ''
 if "case_num" not in st.session_state:
     st.session_state.case_num = ''
+if "fin_opt" not in st.session_state:
+    st.session_state.fin_opt = ''
 
 # Apply CSS styling to resize the buttons
 st.markdown("""
@@ -599,7 +601,7 @@ with st.spinner('Summarization ...'):
         # showing the text in a textbox
         usr_review = st.text_area("", value=st.session_state["tmp_summary"])
         if st.button("Update Summary"):
-            st.session_state["tmp_summary"] = process_text(usr_review)
+            st.session_state.fin_opt = process_text(usr_review)
         # st.write(st.session_state["tmp_summary"])
 
 
@@ -609,7 +611,7 @@ with st.spinner("Downloading...."):
     doc = docx.Document()
     doc.add_heading(f"Case No.: {st.session_state.case_num}",0)
     doc.add_heading('Summary', level=2)
-    doc.add_paragraph(st.session_state["tmp_summary"])
+    doc.add_paragraph(st.session_state.fin_opt)
     doc.add_heading('Summary', level=2)
     columns = list(st.session_state.tmp_table.columns)
     table = doc.add_table(rows=1, cols=len(columns), style="Table Grid")
