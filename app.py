@@ -164,8 +164,11 @@ with st.sidebar:
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
         <li class="nav-item active">
+            <a class="nav-link disabled" href="#">
                 <img src="https://www.exlservice.com/themes/exl_service/exl_logo_rgb_orange_pos_94.png" width="50" height="30" alt="">
-                <span class="sr-only">treff</span>
+                <span class="sr-only">(current)</span>
+                Operations Process Automation
+            </a>
         </li>
         </ul>
     </div>
