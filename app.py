@@ -164,7 +164,7 @@ with st.sidebar:
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
         <li class="nav-item active">
-                <img src="https://github.com/193006/doc_extractor/blob/67096c507bb106cc709de3b5d6e04b1f856f07c8/exl_sar_logo.png" width="350" height="35" alt="">
+                <img src="https://www.exlservice.com/themes/exl_service/exl_logo_rgb_orange_pos_94.png" width="50" height="30" alt="">
                 <span class="sr-only">(current)</span>
         </li>
         </ul>
