@@ -600,8 +600,8 @@ with st.spinner('Summarization ...'):
         usr_review = st.text_area("", value=st.session_state["tmp_summary"])
         if st.button("Update Summary"):
             st.session_state.tmp_summary = process_text(usr_review)
-            # st.write(st.session_state.tmp_summary)
-        st.write(st.session_state["tmp_summary"])
+        process_text(st.session_state.tmp_summary)
+        # st.write(st.session_state["tmp_summary"])
 
 
 with st.spinner("Downloading...."):
