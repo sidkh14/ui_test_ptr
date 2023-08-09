@@ -165,7 +165,7 @@ with st.sidebar:
         <ul class="navbar-nav">
         <li class="nav-item active">
             <a class="nav-link disabled" href="#">
-                <img src="exl_logo.png" width="75" height="45" alt="">
+                <img src="exl_logo.png" width="150" height="45" alt="">
                 <span class="sr-only">(current)</span>
             </a>
         </li>
