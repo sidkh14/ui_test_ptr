@@ -594,8 +594,8 @@ with st.spinner('Summarization ...'):
         # showing the text in a textbox
         usr_review = st.text_area("", value=st.session_state["tmp_summary"])
         if st.button("Update Summary"):
-            st.session_state["tmp_summary"] = usr_review
-            st.write("Your Summary has been updated.")
+            st.session_state.tmp_summary = usr_review
+            st.write(usr_review)
         # st.write(st.session_state["tmp_summary"])
 
 
