@@ -198,7 +198,7 @@ with st.sidebar:
     st.sidebar.markdown('<p class="big-font">SARA</p>', unsafe_allow_html=True)
     # st.sidebar.header("SARA")
     # Add a single dropdown
-    options = ["Select a Case ID", "SAR-2023-24680", "SAR-2023-13579", "SAR-2023-97531", "SAR-2023-86420", "SAR-2023-24681"]
+    options = ["Select Case ID", "SAR-2023-24680", "SAR-2023-13579", "SAR-2023-97531", "SAR-2023-86420", "SAR-2023-24681"]
     selected_option = st.sidebar.selectbox("", options)
     # Add the image to the sidebar below options
     st.sidebar.image("MicrosoftTeams-image (7).png", use_column_width=True)
