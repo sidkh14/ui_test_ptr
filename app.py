@@ -651,12 +651,12 @@ if st.button("Submit"):
     if selected_rad in ("str_opt1"):
         st.write("")
     elif selected_rad in ("Yes"):
-        st.success("Thanks! Your response has been recorded!")
+        st.warning("Thanks for your review, your response has been submitted")
     elif selected_rad in ("No"):
-        st.warning("Thanks! Your response hase been recorded")
+        st.success("Thanks for your review, your response has been submitted")
 
     else:
-        st.info("Thanks the details has been sent for further review")
+        st.info("Thanks for your review, Case has been assigned to the next reviewer")
 
 # Allow the user to clear all stored conversation sessions
 # if st.button("Reset Session"):
