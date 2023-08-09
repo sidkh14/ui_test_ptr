@@ -641,7 +641,7 @@ st.markdown(
             """,
         unsafe_allow_html=True
     )
-selected_rad = st.radio.markdown("Is SAR filing required?", ["opt1","Yes", "No", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
+selected_rad = st.radio("Is SAR filing required?", ["opt1","Yes", "No", "Refer for review"], horizontal=True,disabled=st.session_state.disabled)
 if selected_rad == "Refer for review":
     email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     email_id = st.text_input("Enter your email ID")
