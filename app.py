@@ -600,8 +600,9 @@ with st.spinner('Summarization ...'):
         st.session_state["tmp_summary"] = conversation.predict(input="Give me a detailed summary of the above texts.")
         # showing the text in a textbox
         usr_review = st.text_area("", value=st.session_state["tmp_summary"])
+        st.write(usr_review)
         if st.button("Update Summary"):
-            st.session_state["fin_opt"] = process_text(usr_review)
+            st.session_state["fin_opt"] = usr_review
         # st.write(st.session_state["tmp_summary"])
 
 
@@ -611,7 +612,7 @@ with st.spinner("Downloading...."):
     doc = docx.Document()
     doc.add_heading(f"Case No.: {st.session_state.case_num}",0)
     doc.add_heading('Summary', level=2)
-    doc.add_paragraph(st.session_state.fin_opt)
+    doc.add_paragraph(st.session_state["fin_opt"])
     doc.add_heading('Summary', level=2)
     columns = list(st.session_state.tmp_table.columns)
     table = doc.add_table(rows=1, cols=len(columns), style="Table Grid")
