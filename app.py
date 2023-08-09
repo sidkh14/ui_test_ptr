@@ -165,7 +165,7 @@ with st.sidebar:
         <ul class="navbar-nav">
         <li class="nav-item active">
             <a class="nav-link disabled" href="#">
-                <img src="https://github.com/193006/doc_extractor/blob/main/exl_sar_logo.png" width="350" height="35" alt="">
+                <img src="https://github.com/193006/doc_extractor/blob/67096c507bb106cc709de3b5d6e04b1f856f07c8/exl_sar_logo.png" width="350" height="35" alt="">
                 <span class="sr-only">(current)</span>
             </a>
         </li>
