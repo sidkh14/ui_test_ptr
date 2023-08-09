@@ -163,10 +163,9 @@ with st.sidebar:
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-        <li class="nav-item active">
+
                 <img src="https://github.com/193006/doc_extractor/blob/67096c507bb106cc709de3b5d6e04b1f856f07c8/exl_sar_logo.png" width="350" height="35" alt="">
                 <span class="sr-only">(current)</span>
-        </li>
         </ul>
     </div>
     </nav>
