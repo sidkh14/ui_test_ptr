@@ -592,7 +592,7 @@ with st.spinner('Summarization ...'):
         verbose=True)
         st.session_state["tmp_summary"] = conversation.predict(input="Give me a detailed summary of the above texts.")
         # showing the text in a textbox
-        usr_review = st.text_input("", value=st.session_state["tmp_summary"])
+        usr_review = st.text_area("", value=st.session_state["tmp_summary"])
         st.session_state["tmp_summary"] = usr_review
         # st.write(st.session_state["tmp_summary"])
 
