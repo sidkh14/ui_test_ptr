@@ -141,6 +141,26 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+@st.cache_data
+def add_footer_with_fixed_text(doc, footer_text):
+    # Create a footer object
+    footer = doc.sections[0].footer
+
+    # Add a paragraph to the footer
+    paragraph = footer.paragraphs[0] if footer.paragraphs else footer.add_paragraph()
+
+    # Set the fixed text in the footer
+    paragraph.text = footer_text
+
+    # Add a page number field to the footer
+    run = paragraph.add_run()
+    fld_xml = f'<w:fldSimple {nsdecls("w")} w:instr="PAGE"/>'
+    fld_simple = parse_xml(fld_xml)
+    run._r.append(fld_simple)
+
+    # Set the alignment of the footer text
+    paragraph.alignment = docx.enum.text.WD_PARAGRAPH_ALIGNMENT.CENTER
+
 
 # Set Sidebar
 st.markdown("""
@@ -609,12 +629,14 @@ with st.spinner("Downloading...."):
 # if st.button("Download Response", disabled=st.session_state.disabled):
     # Create a Word document with the table and some text
     doc = docx.Document()
+    doc.add_section(WD_SECTION.NEW_PAGE)
     doc.add_heading(f"Case No.: {st.session_state.case_num}",0)
     doc.add_heading('Summary', level=2)
     doc.add_paragraph(st.session_state["tmp_summary"])
     doc.add_heading('Summary', level=2)
     columns = list(st.session_state.tmp_table.columns)
     table = doc.add_table(rows=1, cols=len(columns), style="Table Grid")
+    footer_text = "This is an automated generated "
     table.autofit = True
     for col in range(len(columns)):
         # set_cell_margins(table.cell(0, col), top=100, start=100, bottom=100, end=50) # set cell margin
@@ -628,7 +650,8 @@ with st.spinner("Downloading...."):
     # save document
     # output_bytes = docx.Document.save(doc, 'output.docx')
     # st.download_button(label='Download Report', data=output_bytes, file_name='evidence.docx', mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-
+    for section in doc.sections:
+        add_footer_with_fixed_text(doc, footer_text)
     bio = io.BytesIO()
     doc.save(bio)
     # Applying to download button -> download_button
