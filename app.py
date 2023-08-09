@@ -161,11 +161,17 @@ with st.sidebar:
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <style>
+    .navbar-brand img {
+      max-height: 50px; /* Adjust the height of the logo */
+      width: auto; /* Allow the width to adjust based on the height */
+    }
+    </style>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link disabled" href="#">
-                <img src="https://www.exlservice.com/themes/exl_service/exl_logo_rgb_orange_pos_94.png" width="50" height="30" alt="">
+            <a class="navbar-brand" href="#">
+                <img src="https://github.com/193006/doc_extractor/blob/67096c507bb106cc709de3b5d6e04b1f856f07c8/exl_sar_logo.png" width="50" height="30" alt="">
                 <span class="sr-only">(current)</span>
                 <p>Operations Process Automation</p>
             </a>
