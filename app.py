@@ -636,7 +636,6 @@ with st.spinner("Downloading...."):
     doc.add_heading('Summary', level=2)
     columns = list(st.session_state.tmp_table.columns)
     table = doc.add_table(rows=1, cols=len(columns), style="Table Grid")
-    footer_text = "This is an automated generated "
     table.autofit = True
     for col in range(len(columns)):
         # set_cell_margins(table.cell(0, col), top=100, start=100, bottom=100, end=50) # set cell margin
@@ -650,8 +649,7 @@ with st.spinner("Downloading...."):
     # save document
     # output_bytes = docx.Document.save(doc, 'output.docx')
     # st.download_button(label='Download Report', data=output_bytes, file_name='evidence.docx', mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-    for section in doc.sections:
-        add_footer_with_fixed_text(doc, footer_text)
+
     bio = io.BytesIO()
     doc.save(bio)
     # Applying to download button -> download_button
