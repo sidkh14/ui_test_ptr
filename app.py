@@ -263,6 +263,11 @@ def usellm(prompt):
     response = service.chat(options)
     return response.content
 
+@st.cache_data
+def process_text(text):
+    # Add your custom text processing logic here
+    processed_text = text
+    return processed_text
 
 @st.cache_resource
 def embed(model_name):
@@ -465,7 +470,7 @@ except Exception:
 st.subheader("Ask Additional Questions")
 query = st.text_input('Please ask below the additional case questions.',disabled=st.session_state.disabled)
 text_dict = {}
-
+@st.cache_data
 def LLM_Response():
     llm_chain = LLMChain(prompt=prompt, llm=llm)
     response = llm_chain.run({"query":query, "context":context})
@@ -594,9 +599,9 @@ with st.spinner('Summarization ...'):
         # showing the text in a textbox
         usr_review = st.text_area("", value=st.session_state["tmp_summary"])
         if st.button("Update Summary"):
-            st.session_state.tmp_summary = usr_review
-            st.write(usr_review)
-        # st.write(st.session_state["tmp_summary"])
+            st.session_state.tmp_summary = process_text(usr_review)
+            # st.write(st.session_state.tmp_summary)
+        st.write(st.session_state["tmp_summary"])
 
 
 with st.spinner("Downloading...."):
