@@ -164,10 +164,10 @@ with st.sidebar:
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link disabled" href="#">
-                <img src="exl_logo.png" width="150" height="45" alt="">
+            <p>
+                <img src="exl_logo.png" width="250" height="45" alt="">
                 <span class="sr-only">(current)</span>
-            </a>
+            </p>
         </li>
         </ul>
     </div>
