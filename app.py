@@ -276,7 +276,7 @@ llm = ChatOpenAI(temperature=0.0)
 memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=500)
 conversation = ConversationChain(llm=llm, memory =memory,verbose=False)
 
-def call_hf_flan_t5_xxl_api(prompt):
+def call_hf_flan_t5_xxl_api(prompt, **params):
     max_new_tokens = params.get('max_new_tokens', 500)
     temperature = params.get('temperature', None)
     top_k = params.get('top_k', None)
@@ -475,7 +475,7 @@ with st.spinner('Wait for it...'):
                 where the dictionary key would carry the questions and its value would have a descriptive answer to the questions asked): "
                 
 
-            response = call_hf_flan_t5_xxl_api(prompts)
+            response = call_hf_flan_t5_xxl_api(prompt=prompts)
             # st.write(response)
             # memory.save_context({"input": f"{queries}"}, {"output": f"{response}"})
             # st.write(response)
@@ -612,7 +612,7 @@ with st.spinner('Getting you information...'):
 
 
         #prompt = PromptTemplate(template=prompt, input_variables=["query", "context"])
-        response = call_hf_flan_t5_xxl_api(prompt_1) #LLM_Response()
+        response = call_hf_flan_t5_xxl_api(prompt=prompt_1) #LLM_Response()
         text_dict[query] = response
         # resp_dict_obj.update(text_dict)
         st.write(response)
