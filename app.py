@@ -25,6 +25,7 @@ from langchain.callbacks import get_openai_callback
 from io import StringIO
 from io import BytesIO
 from usellm import Message, Options, UseLLM
+from langchain import HuggingFaceHub
 from text_generation import Client, InferenceAPIClient
 #from playsound import playsound
 #from langchain.text_splitter import CharacterTextSplitter
@@ -41,6 +42,7 @@ from text_generation import Client, InferenceAPIClient
 
 # Setting Env
 os.environ["OPENAI_API_KEY"] = "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"
+os.environ["HUGGING_FACE_HUB_TOKEN"] = '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'
 
 
 @st.cache_data
