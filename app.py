@@ -39,7 +39,7 @@ from usellm import Message, Options, UseLLM
 #from scipy.io.wavfile import write
 
 # Setting Env
-os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+os.environ["OPENAI_API_KEY"] = st.secrets["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"]
 
 
 @st.cache_data
