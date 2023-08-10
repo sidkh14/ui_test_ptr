@@ -27,7 +27,9 @@ from io import StringIO
 from io import BytesIO
 from usellm import Message, Options, UseLLM
 from langchain import HuggingFaceHub
-# from text_generation import Client, InferenceAPIClient
+pip install text_generation
+import text_generation
+from text_generation import Client, InferenceAPIClient
 #from playsound import playsound
 #from langchain.text_splitter import CharacterTextSplitter
 #from langchain.embeddings.openai import OpenAIEmbeddings
@@ -283,7 +285,7 @@ def call_hf_flan_t5_xxl_api(prompt, **params):
     top_p = params.get('top_p', None)
     stop_sequences = params.get('stop_sequences', None)
     
-    llm = HuggingFaceTextGenInference("google/flan-t5-xxl")
+    llm = InferenceAPIClient("google/flan-t5-xxl")
     response = llm.generate(
         prompt=prompt,
         max_new_tokens=max_new_tokens,
