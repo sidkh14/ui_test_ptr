@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-!pip install text-generation
+pip install text-generation
 import random,os,json,io,re
 import pandas as pd
 import streamlit as st
