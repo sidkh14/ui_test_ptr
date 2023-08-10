@@ -28,8 +28,8 @@ from io import StringIO
 from io import BytesIO
 from usellm import Message, Options, UseLLM
 from langchain import HuggingFaceHub
-import text_generation
-from text_generation import Client, InferenceAPIClient
+# import text_generation
+# from text_generation import Client, InferenceAPIClient
 #from playsound import playsound
 #from langchain.text_splitter import CharacterTextSplitter
 #from langchain.embeddings.openai import OpenAIEmbeddings
