@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import huggingface_hub 
+from huggingface_hub import InferenceClient
 from langchain.llms import HuggingFaceTextGenInference
 import random,os,json,io,re
 import pandas as pd
@@ -285,7 +286,7 @@ def call_hf_flan_t5_xxl_api(prompt, **params):
     top_p = params.get('top_p', None)
     stop_sequences = params.get('stop_sequences', None)
     
-    llm = InferenceAPIClient("google/flan-t5-xxl")
+    llm = InferenceClient("google/flan-t5-xxl")
     response = llm.generate(
         prompt=prompt,
         max_new_tokens=max_new_tokens,
