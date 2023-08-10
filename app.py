@@ -286,7 +286,7 @@ def call_hf_flan_t5_xxl_api(prompt, **params):
     top_p = params.get('top_p', None)
     stop_sequences = params.get('stop_sequences', None)
     
-    llm = InferenceClient("google/flan-t5-xxl")
+    llm = InferenceAPIClient("google/flan-t5-xxl")
     response = llm.generate(
         prompt=prompt,
         max_new_tokens=max_new_tokens,
