@@ -27,7 +27,7 @@ from io import StringIO
 from io import BytesIO
 from usellm import Message, Options, UseLLM
 from langchain import HuggingFaceHub
-pip install text_generation
+!pip install text_generation
 import text_generation
 from text_generation import Client, InferenceAPIClient
 #from playsound import playsound
