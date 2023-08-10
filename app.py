@@ -276,7 +276,7 @@ llm = ChatOpenAI(temperature=0.0)
 memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=500)
 conversation = ConversationChain(llm=llm, memory =memory,verbose=False)
 
-def call_hf_flan_t5_xxl_api(prompt, **params):
+def call_hf_flan_t5_xxl_api(prompt):
     max_new_tokens = params.get('max_new_tokens', 500)
     temperature = params.get('temperature', None)
     top_k = params.get('top_k', None)
