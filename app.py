@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sklearn
 from langchain.llms import HuggingFaceTextGenInference
 import random,os,json,io,re
 import pandas as pd
