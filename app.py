@@ -477,7 +477,7 @@ with st.spinner('Wait for it...'):
             query_l=[]
             for quer,prmpt in zip(ques,pmt):
                 query = quer
-                contexts = docsearch.similarity_search(query, k=5)
+                contexts = docsearch.similarity_search(query, k=4)
 
                 context=''
                 for n in range(len(contexts)):
