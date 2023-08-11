@@ -476,7 +476,8 @@ with st.spinner('Wait for it...'):
             for quer,prmpt in zip(ques,pmt):
                 query = quer
                 contexts = docsearch.similarity_search(query, k=5)
-                 
+
+                context=''
                 for n in range(len(contexts)):
                     context += contexts[n].page_content
 
