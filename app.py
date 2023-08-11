@@ -483,6 +483,8 @@ with st.spinner('Wait for it...'):
                 for n in range(len(contexts)):
                     context += contexts[n].page_content
 
+                context=context.split()[:850]
+                context=" ".join(context)
                 prompt = f''' {prmpt}\n\n\
                        Question: {query}\n\
                        Context: {context}\n\
