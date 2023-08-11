@@ -487,7 +487,7 @@ with st.spinner('Wait for it...'):
                        Question: {query}\n\
                        Context: {context}\n\
                           Response: '''
-                prompt1= prompt.split()[:1024]
+                prompt1= prompt.split()[:850]
                 prompt1=" ".join(prompt1)
                 response = call_hf_flan_t5_xxl_api(prompt=prompt1)
                 response_l.append(response.strip())
