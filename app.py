@@ -280,6 +280,7 @@ memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=500)
 conversation = ConversationChain(llm=llm, memory =memory,verbose=False)
 
 def call_hf_flan_t5_xxl_api(prompt, **params):
+    prompt=prompt.split()[:1024]
     max_new_tokens = params.get('max_new_tokens', 200)
     temperature = params.get('temperature', None)
     top_k = params.get('top_k', None)
