@@ -280,7 +280,7 @@ memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=500)
 conversation = ConversationChain(llm=llm, memory =memory,verbose=False)
 
 def call_hf_flan_t5_xxl_api(prompt, **params):
-    prompt2=prompt.split()[:850]
+    prompt2=prompt.split()[:500]
     prompt2=" ".join(prompt2)
     max_new_tokens = params.get('max_new_tokens', 200)
     temperature = params.get('temperature', None)
@@ -300,16 +300,16 @@ def call_hf_flan_t5_xxl_api(prompt, **params):
 
 
 @st.cache_data
-def usellm(prompt):
+# def usellm(prompt):
 
-    service = UseLLM(service_url="https://usellm.org/api/llm")
-    messages = [
-      Message(role="system", content="You are a fraud analyst, who is an expert at finding out suspicious activities"),
-      Message(role="user", content=f"{prompt}"),
-      ]
-    options = Options(messages=messages)
-    response = service.chat(options)
-    return response.content
+#     service = UseLLM(service_url="https://usellm.org/api/llm")
+#     messages = [
+#       Message(role="system", content="You are a fraud analyst, who is an expert at finding out suspicious activities"),
+#       Message(role="user", content=f"{prompt}"),
+#       ]
+#     options = Options(messages=messages)
+#     response = service.chat(options)
+#     return response.content
 
 @st.cache_data
 def process_text(text):
