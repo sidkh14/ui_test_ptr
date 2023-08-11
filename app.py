@@ -454,31 +454,69 @@ with st.spinner('Wait for it...'):
         if pdf_files is not None:
             # File handling logic
             _, docsearch = embedding_store(pdf_files)
-            queries ="Please provide the following information regarding the possible fraud case: What is the name of the customer name,\
-            has any suspect been reported, list the merchant name, how was the bank notified, when was the bank notified, what is the fraud type,\
-            when did the fraud occur, was the disputed amount greater than 5000 USD, what type of cards are involved, was the police report filed,\
-            and based on the evidence, is this a suspicious activity(Summarize all the questions asked prior to this in a detailed manner),that's the answer of\
-            whether this is a suspicious activity\
-            "
-            contexts = docsearch.similarity_search(queries, k=5) 
-            prompts = f" Give a the answer to the below questions as truthfully and in as detailed in the form of sentences\
-            as possible as per given context only,\n\n\
-                    1. What is the Victim's Name?\n\
-                    2. Has any suspect been reported?\n\
-                    3. List the Merchant name\n\
-                    4. How was the bank notified?\n\
-                    5. When was the bank notified?\n\
-                    6. What is the Fraud Type?\n\
-                    7. When did the fraud occur?\n\
-                    8. Was the disputed amount greater than 5000 USD?\n\
-                    9. What type of cards are involved?\n\
-                    10. Was the police report filed?\n\
-                Context: {contexts}\n\
-                Response (in the python dictionary format\
-                where the dictionary key would carry the questions and its value would have a descriptive answer to the questions asked): "
+
+            ques = ['''What is the Victim's Name?''', '''What is the Suspect's Name?''','''List the Merchant name''',
+                    '''How was the bank notified?''','''When was the bank notified?''','''What type of Fraud is taking place?''',
+                   '''When did the fraud occur?''','''Was the disputed amount greater than 5000 USD?''',
+                    '''What type of cards are involved?''','''Was the police report filed?'''
+                   ]
+            pmt = ['''Perform Name Enitity Recognition to identify the Customer name as accurately as possible, given the context. The Customer can also be referenced as the Victim or the person with whom the Fraud has taken place.''',
+                  '''Perform Name Enitity Recognition to identify the Suspect name as accurately as possible, given the context. Suspect is the Person who has committed the fraud with the Customer. Respond saying "The Suspect Name is not Present" if there is no suspect in the given context.''',
+                  '''Perform Name Enitity Recognition to identify all the Merchant Organizations as accurately as possible, given the context. A merchant is a type of business or organization that accepts payments from the customer account. Give a relevant and concise response.''',
+                  '''You need to act as a Financial analyst to identify how was the bank notified of the Supicious or Fraud event with in the given context. The means of communication can be a call, an email or in person. Give a relevant and concise response.''',
+                  '''You need to act as a Financial analyst to identify the when the bank was notified of the Fraud i.e., the disputed date. Given the context, provide a relevant and concise response.''',
+                  '''You need to act as a Financial analyst to identify the type of fraud or suspicious activity has taken place amd summarize it, within the given context. Also mention the exact fraud code. Give a relevant and concise response.''',
+                  '''You need to act as a Financial analyst to identify the when the did the fraud occur i.e., the Transaction Date. Given the context, provide a relevant and concise response.''',
+                  '''You need to act as a Financial analyst to identify the disputed amount and perform a mathematical calculation to check if the disputed amount is greater than 5000 or no, given the context. Give a relevant and concise response.''',
+                  '''You need to act as a Financial analyst to identify the type of card and card's brand involved, given the context. On a higher level the card can be a Credit or Debit Card. VISA, MasterCard or American Express, Citi Group, etc. are the different brands with respect to a Credit card or Debit Card . Give a relevant and concise response.''',
+                  '''You need to act as a Financial analyst to identify if the police was reported of the Fraud activity, given the context. Give a relevant and concise response.'''
+                  ]
+            response_l=[]
+            query_l=[]
+            for quer,prmpt in zip(ques,pmt):
+                query = quer
+                contexts = docsearch.similarity_search(query, k=5)
+                 
+                for n in range(len(contexts)):
+                    context += contexts[n].page_content
+
+                prompt = f''' {prmpt}\n\n\
+                       Question: {query}\n\
+                       Context: {context}\n\
+                          Response: '''
+                 
+                response = call_hf_flan_t5_xxl_api(prompt=prompt)
+                response_l.append(response.strip())
+                query_l.append(query)
+            pd_temp=pd.DataFrame(zip(query_l, response_l), columns=["Questions", "Response"])
+
+            st.table(pd_temp)
+            st.session_state["tmp_table"] = pd.concat([st.session_state.tmp_table, pd_temp], ignore_index=True)     
+                        # queries ="Please provide the following information regarding the possible fraud case: What is the name of the customer name,\
+            # has any suspect been reported, list the merchant name, how was the bank notified, when was the bank notified, what is the fraud type,\
+            # when did the fraud occur, was the disputed amount greater than 5000 USD, what type of cards are involved, was the police report filed,\
+            # and based on the evidence, is this a suspicious activity(Summarize all the questions asked prior to this in a detailed manner),that's the answer of\
+            # whether this is a suspicious activity\
+            # "
+            # contexts = docsearch.similarity_search(queries, k=5) 
+            # prompts = f" Give a the answer to the below questions as truthfully and in as detailed in the form of sentences\
+            # as possible as per given context only,\n\n\
+            #         1. What is the Victim's Name?\n\
+            #         2. Has any suspect been reported?\n\
+            #         3. List the Merchant name\n\
+            #         4. How was the bank notified?\n\
+            #         5. When was the bank notified?\n\
+            #         6. What is the Fraud Type?\n\
+            #         7. When did the fraud occur?\n\
+            #         8. Was the disputed amount greater than 5000 USD?\n\
+            #         9. What type of cards are involved?\n\
+            #         10. Was the police report filed?\n\
+            #     Context: {contexts}\n\
+            #     Response (in the python dictionary format\
+            #     where the dictionary key would carry the questions and its value would have a descriptive answer to the questions asked): "
                 
 
-            response = call_hf_flan_t5_xxl_api(prompt=prompts)
+            ## response = call_hf_flan_t5_xxl_api(prompt=prompts)
             # st.write(response)
             # memory.save_context({"input": f"{queries}"}, {"output": f"{response}"})
             # st.write(response)
@@ -492,16 +530,16 @@ with st.spinner('Wait for it...'):
             #     Response (give me the response in the form of a python dictionary with questions exactly as it is): "
             # resp_dict = usellm(prompt_conv)
             # st.write(resp_dict)
-            resp_dict_obj = json.loads(response)
-            res_df = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
-            try:
-                res_df.Question = res_df.Question.apply(lambda x: x.split(".")[1])
-                res_df.index = res_df.index + 1
-            except IndexError:
-                pass
-            st.table(res_df)
+            ## resp_dict_obj = json.loads(response)
+            ## res_df = pd.DataFrame(resp_dict_obj.items(), columns=['Question','Answer'])
+            ## try:
+            ##     res_df.Question = res_df.Question.apply(lambda x: x.split(".")[1])
+            ##     res_df.index = res_df.index + 1
+            ## except IndexError:
+            ##     pass
+            ## st.table(res_df)
             # st.write(resp_dict_obj)
-            st.session_state["tmp_table"] = pd.concat([st.session_state.tmp_table, res_df], ignore_index=True)
+            ##st.session_state["tmp_table"] = pd.concat([st.session_state.tmp_table, res_df], ignore_index=True)
 st.markdown("---")
 
 # For input box outside of template
