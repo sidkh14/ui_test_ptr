@@ -280,8 +280,8 @@ memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=500)
 conversation = ConversationChain(llm=llm, memory =memory,verbose=False)
 
 def call_hf_flan_t5_xxl_api(prompt, **params):
-    prompt=prompt.split()[:1024]
-    prompt=" ".join(prompt)
+    prompt2=prompt.split()[:1024]
+    prompt2=" ".join(prompt2)
     max_new_tokens = params.get('max_new_tokens', 200)
     temperature = params.get('temperature', None)
     top_k = params.get('top_k', None)
@@ -290,7 +290,7 @@ def call_hf_flan_t5_xxl_api(prompt, **params):
     
     llm = InferenceAPIClient("google/flan-t5-xxl")
     response = llm.generate(
-        prompt=prompt,
+        prompt=prompt2,
         max_new_tokens=max_new_tokens,
         temperature=temperature,
         top_k=top_k,
@@ -487,8 +487,9 @@ with st.spinner('Wait for it...'):
                        Question: {query}\n\
                        Context: {context}\n\
                           Response: '''
-                 
-                response = call_hf_flan_t5_xxl_api(prompt=prompt)
+                prompt1= prompt.split()[:1024]
+                prompt1=" ".join(prompt1)
+                response = call_hf_flan_t5_xxl_api(prompt=prompt1)
                 response_l.append(response.strip())
                 query_l.append(query)
             pd_temp=pd.DataFrame(zip(query_l, response_l), columns=["Questions", "Response"])
